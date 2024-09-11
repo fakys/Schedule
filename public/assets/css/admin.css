@@ -1,0 +1,36 @@
+:root{
+    --b-collor:#f4f4f4;
+    --m-collor-b: #044d86;
+    --m-collor-r:#B22222;
+}
+
+.main-admin-content{
+    background: #f4f4f4;
+}
+.main-admin-sidebar{
+    background: var(--m-collor-b);
+}
+.main-admin-sidebar .main-admin-border{
+    border-bottom: 1px solid var(--b-collor);
+}
+.nav-sidebar .nav-admin-item a p{
+    white-space: nowrap;
+}
+.nav-admin-item{
+    border-bottom:1px solid var(--m-collor-b);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.c-red{
+    color: var(--m-collor-r);
+}
+.c-white{
+    color: var(--b-collor);
+}
+.b-white{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: rgba(245, 245, 245, 0.1);
+    border-bottom: 1px solid var(--b-collor);
+}
