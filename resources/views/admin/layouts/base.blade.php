@@ -18,7 +18,7 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-main-c navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -179,9 +179,19 @@
       <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <li class="nav-header">Обучение</li>
+
               <li class="nav-admin-item">
                   <a href="#" class="nav-link">
-                      <i class="nav-icon far fa-calendar-alt"></i>
+                      <i class="nav-icon far fa-calendar-alt nav-fa-icon"></i>
+                      <p class="nav-link-text">
+                          Расписания
+                      </p>
+                  </a>
+              </li>
+
+              <li class="nav-admin-item">
+                  <a href="#" class="nav-link">
+                      <i class="fa fa-graduation-cap nav-fa-icon nav-icon"></i>
                       <p class="nav-link-text">
                           Расписания
                       </p>
@@ -189,15 +199,7 @@
               </li>
               <li class="nav-admin-item">
                   <a href="#" class="nav-link">
-                      <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                      <p class="nav-link-text">
-                          Преподователи
-                      </p>
-                  </a>
-              </li>
-              <li class="nav-admin-item">
-                  <a href="#" class="nav-link">
-                      <i class="fa fa-users" aria-hidden="true"></i>
+                      <i class="fa fa-users nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Группы
                       </p>
@@ -205,7 +207,7 @@
               </li>
               <li class="nav-admin-item">
                   <a href="#" class="nav-link">
-                      <i class="fa fa-book" aria-hidden="true"></i>
+                      <i class="fa fa-book nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Предметы
                       </p>
@@ -213,7 +215,7 @@
               </li>
               <li class="nav-admin-item">
                   <a href="#" class="nav-link">
-                      <i class="fa fa-coffee" aria-hidden="true"></i>
+                      <i class="fa fa-coffee nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Перерывы
                       </p>
@@ -221,7 +223,7 @@
               </li>
               <li class="nav-admin-item">
                   <a href="#" class="nav-link">
-                      <i class="fa fa-hourglass-end" aria-hidden="true"></i>
+                      <i class="fa fa-hourglass-end nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Пары
                       </p>
@@ -230,7 +232,7 @@
               <li class="nav-header">Админ панель</li>
               <li class="nav-admin-item">
                   <a href="#" class="nav-link">
-                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <i class="fa fa-user nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Пользователи
                       </p>
@@ -238,7 +240,7 @@
               </li>
               <li class="nav-admin-item">
                   <a href="#" class="nav-link">
-                      <i class="fa fa-address-book" aria-hidden="true"></i>
+                      <i class="fa fa-address-book nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Группы ползователей
                       </p>
@@ -247,7 +249,7 @@
               <li class="nav-header">База данных</li>
               <li class="nav-admin-item">
                   <a href="#" class="nav-link">
-                      <i class="fa fa-table" aria-hidden="true"></i>
+                      <i class="fa fa-table nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Таблицы
                       </p>

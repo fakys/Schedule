@@ -14,6 +14,6 @@ class StudentGroup extends Model
 
     public function speciality()
     {
-        $this->belongsTo(Speciality::class);
+        return $this->belongsTo(Speciality::class, 'id');
     }
 }
