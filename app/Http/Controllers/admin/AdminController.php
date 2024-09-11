@@ -3,12 +3,20 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lesson;
+use App\Models\Speciality;
+use App\Models\StudentGroup;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $teachers = Teacher::all();
+        $student_groups = StudentGroup::all();
+        $specialities = Speciality::all();
+        $lessons = Lesson::all();
+        return view('admin.index', compact('teachers', 'student_groups', 'specialities', 'lessons'));
     }
 }

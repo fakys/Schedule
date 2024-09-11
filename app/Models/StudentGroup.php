@@ -10,4 +10,10 @@ class StudentGroup extends Model
     use HasFactory;
 
     protected $table='student_groups';
+
+
+    public function speciality()
+    {
+        $this->belongsTo(Speciality::class);
+    }
 }

@@ -11,17 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lesson_formats', function (Blueprint $table){
-            $table->id();
-            $table->string('name')->unique();
-            $table->text('description')->nullable();
-            $table->timestamps();
-        });
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->text('description')->nullable();
-            $table->foreignIdFor(\App\Models\LessonFormat::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
         Schema::create('teachers_lessons', function (Blueprint $table) {
@@ -37,8 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lessons');
-        Schema::dropIfExists('lesson_formats');
         Schema::dropIfExists('teachers_lessons');
+        Schema::dropIfExists('lessons');
     }
 };

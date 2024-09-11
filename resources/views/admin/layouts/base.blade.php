@@ -159,7 +159,7 @@
   <aside class="main-sidebar main-admin-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link d-flex justify-content-center main-admin-border">
-      <img src="{{asset('assets/img/logo.png')}}" alt="AdminLTE Logo" width="75">
+      <img src="{{asset('assets/img/logo.png')}}" alt="AdminLTE Logo" width="60">
 {{--      <span class="brand-text font-weight-light">AdminLTE 3</span>--}}
     </a>
 

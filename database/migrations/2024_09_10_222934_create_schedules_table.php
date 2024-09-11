@@ -17,6 +17,12 @@ return new class extends Migration
             $table->integer('duration_minutes');
             $table->timestamps();
         });
+        Schema::create('lesson_formats', function (Blueprint $table){
+            $table->id();
+            $table->string('name')->unique();
+            $table->text('description')->nullable();
+            $table->timestamps();
+        });
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->integer('number_pairs');
@@ -28,6 +34,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Lesson::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Teacher::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(\App\Models\LessonDuration::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(\App\Models\LessonFormat::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }
@@ -39,5 +46,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('schedules');
         Schema::dropIfExists('lesson_durations');
+        Schema::dropIfExists('lesson_formats');
     }
 };
