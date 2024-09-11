@@ -130,6 +130,38 @@
                     </tbody>
                 </table>
             </x-admin-index-block>
+            <x-admin-index-block title="Перерывы">
+                <table class="table admin-mini-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Номер перерыва</th>
+                        <th scope="col">Длительность</th>
+                        <th scope="col">Просмотреть</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($duration_breaks as $break)
+                        <tr>
+                            <th scope="row">{{$break->id}}</th>
+                            @if($break->name)
+                                <td>{{Str::limit($break->name, 15)}}</td>
+                            @else
+                                <td><div class="null">Null</div></td>
+                            @endif
+                            <td>{{Str::limit($break->number_breaks, 15)}}</td>
+                            @if($break->duration_minutes)
+                                <td>{{Str::limit($break->duration_minutes, 15)}}</td>
+                            @else
+                                <td><div class="null">Null</div></td>
+                            @endif
+                            <td><a href="#" class="btn btn-success p-0 pl-1 pr-1 text-nowrap"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </x-admin-index-block>
         </div>
     </div>
 @endsection
