@@ -24,4 +24,47 @@ $(document).ready(function (){
         $(this).addClass('d-none')
         $(this).prev().removeClass('d-none')
     })
+    $('#check_all_show_model').on('click', function (){
+        if($(this).prop("checked")){
+            for ( let i of $('.checkbox-show-model')){
+                i.checked = true
+            }
+            checked()
+        }else {
+            for ( let i of $('.checkbox-show-model')){
+                i.checked = false
+            }
+            end_checked()
+        }
+    })
+    function checked(){
+        for (let i of $('.btn-show-model')){
+            i.classList.remove('d-none')
+        }
+    }
+    function has_checked(){
+        let checked = false;
+        for (let i of $('.checkbox-show-model')){
+            if (i.checked){
+                checked = true
+            }
+        }
+        return checked;
+    }
+    function end_checked(){
+        if(!has_checked()){
+            for (let i of $('.btn-show-model')){
+                i.classList.add('d-none')
+            }
+            $('#check_all_show_model').prop('checked', false)
+        }
+    }
+
+    $('.checkbox-show-model').change(function (){
+        if($(this).prop('checked')){
+            checked()
+        }else{
+            end_checked()
+        }
+    })
 })

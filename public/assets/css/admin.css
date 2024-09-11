@@ -118,3 +118,35 @@
     max-width: 100%;
     overflow-x: auto;
 }
+.check-all-show-model label, .check-all-show-model input{
+    cursor: pointer;
+    user-select: none;
+}
+.btn-search{
+    border: 1px solid #ced4da;
+}
+.btn-main-b{
+    color: white;
+    background: #035b9f;
+    transition-duration: 0.3s;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+.btn-main-b:hover{
+    color: white;
+    background: var(--m-collor-b);
+}
+.btn-main-b i{
+    font-size: 14px;
+}
+.btn-show-model{
+    padding: 2px 10px;
+    font-size: 16px;
+}
+
+.btn-show-model i{
+    font-size: 14px;
+}
+.gap-2{
+    gap: 10px;
+}
