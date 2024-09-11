@@ -9,4 +9,8 @@ class Teacher extends Model
 {
     use HasFactory;
     protected $table= 'teachers';
+
+    public static function nameTable(){
+        return 'teachers';
+    }
 }

@@ -10,4 +10,8 @@ class LessonFormat extends Model
     use HasFactory;
 
     protected $table = 'lesson_formats';
+
+    public static function nameTable(){
+        return 'lesson_formats';
+    }
 }

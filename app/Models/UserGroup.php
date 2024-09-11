@@ -9,4 +9,8 @@ class UserGroup extends Model
 {
     use HasFactory;
     protected $table= 'users_groups';
+
+    public static function nameTable(){
+        return 'users_groups';
+    }
 }

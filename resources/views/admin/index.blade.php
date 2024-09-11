@@ -3,7 +3,7 @@
 @section('content')
     <div class="admin-index-page row">
         <div class="col index-col">
-            <x-admin-index-block title="Преподователи">
+            <x-admin-index-block title="Преподаватели" table="{{$teachers::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -15,7 +15,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($teachers as $teacher)
+                    @foreach($teachers::all() as $teacher)
                         <tr>
                             <th scope="row">{{$teacher->id}}</th>
                             <td class="d-flex justify-content-center align-items-center"><img src="{{$teacher->avatar?'':asset('assets/img/user/start_user_ava.jpg')}}" width="20"></td>
@@ -27,7 +27,7 @@
                     </tbody>
                 </table>
             </x-admin-index-block>
-            <x-admin-index-block title="Предметы">
+            <x-admin-index-block title="Предметы" table="{{$lessons::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -38,7 +38,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($lessons as $lesson)
+                    @foreach($lessons::all() as $lesson)
                         <tr>
                             <th scope="row">{{$lesson->id}}</th>
                             <td>{{Str::limit($lesson->name, 15)}}</td>
@@ -54,7 +54,7 @@
                 </table>
             </x-admin-index-block>
 
-            <x-admin-index-block title="Форматы предметов">
+            <x-admin-index-block title="Форматы предметов" table="{{$lesson_formats::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -65,7 +65,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($lesson_formats as $format)
+                    @foreach($lesson_formats::all() as $format)
                         <tr>
                             <th scope="row">{{$format->id}}</th>
                             <td>{{Str::limit($format->name, 15)}}</td>
@@ -83,7 +83,7 @@
         </div>
 
         <div class="col index-col">
-            <x-admin-index-block title="Специальности">
+            <x-admin-index-block title="Специальности" table="{{$specialities::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -94,7 +94,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($specialities as $speciality)
+                    @foreach($specialities::all() as $speciality)
                         <tr>
                             <th scope="row">{{$speciality->id}}</th>
                             <td>{{Str::limit($speciality->name, 15)}}</td>
@@ -106,7 +106,7 @@
                 </table>
             </x-admin-index-block>
 
-            <x-admin-index-block title="Группы">
+            <x-admin-index-block title="Группы" table="{{$student_groups::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -118,7 +118,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($student_groups as $group)
+                    @foreach($student_groups::all() as $group)
                         <tr>
                             <th scope="row">{{$group->id}}</th>
                             <td>{{Str::limit($group->name, 15)}}</td>
@@ -130,7 +130,7 @@
                     </tbody>
                 </table>
             </x-admin-index-block>
-            <x-admin-index-block title="Перерывы">
+            <x-admin-index-block title="Перерывы" table="{{$duration_breaks::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -142,7 +142,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($duration_breaks as $break)
+                    @foreach($duration_breaks::all() as $break)
                         <tr>
                             <th scope="row">{{$break->id}}</th>
                             @if($break->name)

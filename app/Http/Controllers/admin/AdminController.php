@@ -9,19 +9,32 @@ use App\Models\LessonFormat;
 use App\Models\Speciality;
 use App\Models\StudentGroup;
 use App\Models\Teacher;
+use App\Traits\DataModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use PHPUnit\Event\Telemetry\Duration;
 
 class AdminController extends Controller
 {
+    use DataModel;
     public function index()
     {
-        $teachers = Teacher::all();
-        $student_groups = StudentGroup::all();
-        $specialities = Speciality::all();
-        $lessons = Lesson::all();
-        $lesson_formats= LessonFormat::all();
-        $duration_breaks = DurationBreak::all();
+        $teachers = Teacher::class;
+        $student_groups = StudentGroup::class;
+        $specialities = Speciality::class;
+        $lessons = Lesson::class;
+        $lesson_formats= LessonFormat::class;
+        $duration_breaks = DurationBreak::class;
         return view('admin.index', compact('teachers', 'student_groups', 'specialities', 'lessons', 'lesson_formats', 'duration_breaks'));
+    }
+    public function show_model($table)
+    {
+        $model = $this->getTableByName($table);
+        if(!$model){
+            abort(404);
+        }else{
+            $columns = Schema::getColumnListing($table);
+        }
+        return view('admin.show_model', compact('model', 'columns'));
     }
 }

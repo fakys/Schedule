@@ -11,6 +11,9 @@ class StudentGroup extends Model
 
     protected $table='student_groups';
 
+    public static function nameTable(){
+        return 'student_groups';
+    }
 
     public function speciality()
     {

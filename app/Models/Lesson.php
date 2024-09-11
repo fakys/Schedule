@@ -10,4 +10,8 @@ class Lesson extends Model
     use HasFactory;
 
     protected $table = 'lessons';
+
+    public static function nameTable(){
+        return 'lessons';
+    }
 }

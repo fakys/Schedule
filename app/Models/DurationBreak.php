@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class DurationBreak extends Model
 {
     use HasFactory;
+
+    public static function nameTable(){
+        return 'duration_breaks';
+    }
 }

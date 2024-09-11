@@ -10,4 +10,8 @@ class LessonDuration extends Model
     use HasFactory;
 
     protected $table = 'duration_lessons';
+
+    public static function nameTable(){
+        return 'duration_lessons';
+    }
 }

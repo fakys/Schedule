@@ -83,8 +83,12 @@
     overflow: auto;
     border-bottom-left-radius: 10px;
 }
-.admin-index-block-title{
+.admin-index-block-title a{
+    color: white;
     font-size: 18px;
+}
+.admin-index-block-title a:hover{
+    border-bottom: 1px solid white;
 }
 .admin-mini-table th{
     font-size: 14px;
@@ -109,4 +113,8 @@
 }
 .null{
     color: gray;
+}
+.admin-table-show-model{
+    max-width: 100%;
+    overflow-x: auto;
 }
