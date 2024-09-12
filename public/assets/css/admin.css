@@ -150,3 +150,19 @@
 .gap-2{
     gap: 10px;
 }
+.search-form{
+    width: 300px;
+}
+.row-object{
+    display: none;
+}
+.pages-items{
+    display: flex;
+}
+.page-item{
+    cursor: pointer;
+    user-select: none;
+}
+.active-row{
+    display: table-row;
+}

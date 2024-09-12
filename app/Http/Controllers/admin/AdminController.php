@@ -27,14 +27,15 @@ class AdminController extends Controller
         $duration_breaks = DurationBreak::class;
         return view('admin.index', compact('teachers', 'student_groups', 'specialities', 'lessons', 'lesson_formats', 'duration_breaks'));
     }
-    public function show_model($table)
+    public function show_model($table, Request $request)
     {
-        $model = $this->getTableByName($table);
+        $model = $this->getTableByName($table)::all();
+
         if(!$model){
             abort(404);
         }else{
             $columns = Schema::getColumnListing($table);
         }
-        return view('admin.show_model', compact('model', 'columns'));
+        return view('admin.show_model', compact('model', 'columns', 'table'));
     }
 }
