@@ -10,7 +10,10 @@
                 <a href="#" class="btn btn-danger btn-show-model d-none"><i class="fa fa-ban" aria-hidden="true"></i> Удалить</a>
             </div>
             <div class="form ml-auto search-form input-group">
-                <input type="search" name="search" class="form-control form-control-sm" placeholder="Найти">
+                @if(request()->input('search'))
+                    <div class="d-flex justify-content-center align-items-center mr-1"><a href="{{route('admin.show_model', $table)}}" class="btn btn-danger p-0 pl-1 pr-1"><i class="fa fa-times" aria-hidden="true"></i> Отменить</a> </div>
+                @endif
+                <input type="search" name="search" class="form-control form-control-sm" placeholder="Найти" value="{{request()->input('search')}}">
                 <div class="input-group-append">
                     <button class="btn btn-light btn-search p-0 pl-2 pr-2" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </div>
@@ -37,7 +40,12 @@
                         <td><div class="d-flex justify-content-center"><input type="checkbox" class="checkbox-show-model"></div></td>
                         @foreach($columns as $col)
                             @if($val->$col)
-                                <td>{{$val->$col}}</td>
+                                @if(in_array($col, $val->getMainFields()))
+                                    <td><a href="#">{{$val->$col}}</a></td>
+                                @else
+                                    <td>{{$val->$col}}</td>
+                                @endif
+
                             @else
                                 <td><div class="null">Null</div></td>
                             @endif

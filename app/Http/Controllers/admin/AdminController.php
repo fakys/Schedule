@@ -9,6 +9,7 @@ use App\Models\LessonFormat;
 use App\Models\Speciality;
 use App\Models\StudentGroup;
 use App\Models\Teacher;
+use App\Traits\AdminHelper;
 use App\Traits\DataModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +18,7 @@ use PHPUnit\Event\Telemetry\Duration;
 class AdminController extends Controller
 {
     use DataModel;
+    use AdminHelper;
     public function index()
     {
         $teachers = Teacher::class;
@@ -29,8 +31,12 @@ class AdminController extends Controller
     }
     public function show_model($table, Request $request)
     {
-        $model = $this->getTableByName($table)::all();
 
+        if($request->input('search')){
+            $model = $this->SearchInModel($this->getTableByName($table), $request->input('search'));
+        }else{
+            $model = $this->getTableByName($table)::all();
+        }
         if(!$model){
             abort(404);
         }else{

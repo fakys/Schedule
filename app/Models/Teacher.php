@@ -13,4 +13,15 @@ class Teacher extends Model
     public static function nameTable(){
         return 'teachers';
     }
+
+    public static function getMainFields()
+    {
+        return [
+            'name',
+            'surname',
+            'patronymic',
+            'email',
+            'avatar'
+        ];
+    }
 }
