@@ -174,4 +174,10 @@
     color: white;
     background: var(--primary);
 }
+.check-all-show-model input, .check-all-show-model label, .checkbox-show-model{
+    cursor: pointer;
+}
+.check-all-show-model{
+    text-align: center;
+}
 

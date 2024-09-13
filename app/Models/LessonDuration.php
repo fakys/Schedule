@@ -14,4 +14,12 @@ class LessonDuration extends Model
     public static function nameTable(){
         return 'duration_lessons';
     }
+
+    public static function getMainFields()
+    {
+        return [
+            'name',
+            'duration_minutes'
+        ];
+    }
 }

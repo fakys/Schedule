@@ -13,4 +13,11 @@ class Speciality extends Model
     public static function nameTable(){
         return 'specialities';
     }
+
+    public static function getMainFields()
+    {
+        return [
+            'name'
+        ];
+    }
 }

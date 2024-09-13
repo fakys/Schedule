@@ -19,4 +19,12 @@ class StudentGroup extends Model
     {
         return $this->belongsTo(Speciality::class, 'id');
     }
+
+    public static function getMainFields()
+    {
+        return [
+            'name',
+            'full_name'
+        ];
+    }
 }

@@ -14,4 +14,11 @@ class LessonFormat extends Model
     public static function nameTable(){
         return 'lesson_formats';
     }
+    public static function getMainFields()
+    {
+        return [
+            'name',
+            'description'
+        ];
+    }
 }

@@ -12,4 +12,14 @@ class DurationBreak extends Model
     public static function nameTable(){
         return 'duration_breaks';
     }
+
+    public static function getMainFields()
+    {
+        return [
+            'name',
+            'number_breaks',
+            'time_start',
+            'time_end'
+        ];
+    }
 }

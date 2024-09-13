@@ -14,4 +14,12 @@ class Lesson extends Model
     public static function nameTable(){
         return 'lessons';
     }
+
+    public static function getMainFields()
+    {
+        return [
+            'name',
+            'description'
+        ];
+    }
 }
