@@ -55,7 +55,7 @@
             </tbody>
         </table>
         <div class="card-footer clearfix mb-3">
-            <ul class="pagination pagination-sm m-0 float-right">
+            <ul class="pagination pagination-sm m-0 float-left">
                 <li class="page-item page-link pagination-prev">«</li>
                 <div class="pages-items">
                 </div>

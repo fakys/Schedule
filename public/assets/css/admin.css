@@ -166,3 +166,12 @@
 .active-row{
     display: table-row;
 }
+.active-paginate{
+    background: var(--primary);
+    color: white;
+}
+.active-paginate:hover{
+    color: white;
+    background: var(--primary);
+}
+
