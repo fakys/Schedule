@@ -44,4 +44,9 @@ class AdminController extends Controller
         }
         return view('admin.show_model', compact('model', 'columns', 'table'));
     }
+
+    public function create_model($model, Request $request)
+    {
+
+    }
 }

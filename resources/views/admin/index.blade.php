@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="admin-index-page row">
-        <div class="col index-col">
+        <div class="col index-col d-flex align-items-center">
             <x-admin-index-block title="Преподаватели" table="{{$teachers::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
@@ -82,7 +82,7 @@
             </x-admin-index-block>
         </div>
 
-        <div class="col index-col">
+        <div class="col index-col d-flex align-items-center">
             <x-admin-index-block title="Специальности" table="{{$specialities::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>

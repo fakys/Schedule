@@ -69,7 +69,7 @@ $(document).ready(function (){
 
 
 
-    $('.checkbox-show-model').ready(function (){
+    $('.checkbox-show-model').each(function (){
         let pages = [];
         let context_page = 0
         let rows = $('.row-object');
