@@ -53,4 +53,30 @@ class Teacher extends Model
             'number'=>['integer'],
         ];
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating(function ($model){
+            self::save_avatar($model);
+        });
+    }
+
+    public function loadFiles($files)
+    {
+        foreach ($files as $key=>$val){
+            $this->$key = $val;
+        }
+    }
+    private static function save_avatar($model)
+    {
+        if($model->avatar){
+            $file = $model->avatar;
+            $model->avatar = "storage/{$file->store('image/teacher_ava', 'public')}";
+        }else{
+            $model->avatar = "assets/img/user/start_user_ava.jpg";
+        }
+
+    }
 }

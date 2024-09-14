@@ -64,6 +64,9 @@ class AdminController extends Controller
         if($table && $request->post()){
             if(validate($request->post(), $table::rules())){
                 $new_model = new $table($request->post());
+                if($request->file()){
+                    $new_model->loadFiles($request->file());
+                }
                 if($new_model->save()){
                     return redirect()->route('admin.show_model', ['table'=>$table::nameTable()]);
                 }
