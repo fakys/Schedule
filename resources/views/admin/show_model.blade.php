@@ -5,7 +5,7 @@
     <div class="admin-table-show-model">
         <form method="get" action="{{route('admin.show_model', ['table'=>$table])}}" class="d-flex mb-2">
             <div class="d-flex gap-2">
-                <a href="#" class="btn-main-b"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</a>
+                <a href="{{route('admin.create_model', ['table'=>$table])}}" class="btn-main-b"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</a>
                 <a href="#" class="btn btn-success btn-show-model d-none"><i class="fa fa-paint-brush" aria-hidden="true"></i> Редактировать</a>
                 <a href="#" class="btn btn-danger btn-show-model d-none"><i class="fa fa-ban" aria-hidden="true"></i> Удалить</a>
             </div>
@@ -24,7 +24,7 @@
             <tr>
                 <th>
                     <div class="check-all-show-model">
-                        <label for="check_all_show_model" class="m-0">Отметиь все</label>
+                        <label for="check_all_show_model" class="m-0 text-nowrap">Отметиь все</label>
                         <div class="d-flex justify-content-center"><input id="check_all_show_model" type="checkbox"></div>
                     </div>
                 </th>

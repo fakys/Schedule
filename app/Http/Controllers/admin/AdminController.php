@@ -13,7 +13,9 @@ use App\Traits\AdminHelper;
 use App\Traits\DataModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Validation\ValidationException;
 use PHPUnit\Event\Telemetry\Duration;
+use function Termwind\render;
 
 class AdminController extends Controller
 {
@@ -45,8 +47,30 @@ class AdminController extends Controller
         return view('admin.show_model', compact('model', 'columns', 'table'));
     }
 
-    public function create_model($model, Request $request)
+    public function create_model($table)
     {
+        $table = $this->getTableByName($table);
+        if($table){
+            return view('admin.create', ['model'=>$table]);
+        }else{
+            abort(404);
+        }
+    }
 
+
+    public function store_model($table, Request $request)
+    {
+        $table = $this->getTableByName($table);
+        if($table && $request->post()){
+            if(validate($request->post(), $table::rules())){
+                $new_model = new $table($request->post());
+                if($new_model->save()){
+                    return redirect()->route('admin.show_model', ['table'=>$table::nameTable()]);
+                }
+            }
+
+        }else{
+            abort(404);
+        }
     }
 }

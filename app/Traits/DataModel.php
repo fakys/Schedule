@@ -10,6 +10,7 @@ use App\Models\StudentGroup;
 use App\Models\Teacher;
 use App\Models\User;
 use App\Models\UserGroup;
+use Illuminate\Database\Eloquent\Model;
 
 trait DataModel
 {
