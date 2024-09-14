@@ -40,12 +40,32 @@
                     <div class="error">{{$errors->first('number')}}</div>
                 @endif
             </div>
-            <div class="form-group">
-                <label>Фотография</label>
-                <input type="file" class="form-control @if($errors->has('avatar')) {{'is-invalid'}} @endif" name="avatar">
-                @if($errors->has('avatar'))
-                    <div class="error">{{$errors->first('avatar')}}</div>
-                @endif
+            <div class="admin-form-photo-block">
+                <div class="form-group d-flex gap-2">
+                    <div>
+                        <label>Фотография</label>
+                        <label for="admin-photo-input" class="admin-drop-zone">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="" class="admin-drop-zone-image">
+                            </div>
+                            <div class="admin-drop-zone-content">
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                                <div class="btn-main-r">
+                                    Загрузить изображение
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="pt-5">
+                        <div class="btn-main-r admin-close-drop-zone">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <input type="file" id="admin-photo-input" accept=".png, .jpg, .jpeg" class="form-control @if($errors->has('avatar')) {{'is-invalid'}} @endif photo-input" name="avatar">
+                    @if($errors->has('avatar'))
+                        <div class="error">{{$errors->first('avatar')}}</div>
+                    @endif
+                </div>
             </div>
             <div class="form-group">
                 <label>Дата рождения</label>

@@ -189,4 +189,45 @@ $(document).ready(function (){
 
     })
 
+
+    function load_photo_drop_zone(file){
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.admin-drop-zone-content').addClass('d-none')
+                $('.admin-close-drop-zone').addClass('d-flex')
+                $('.admin-drop-zone-image').attr('src', e.target.result).show();
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    $('.photo-input').on('change',function (){
+        let file = event.target.files[0];
+        load_photo_drop_zone(file)
+    })
+    $('.admin-close-drop-zone').on('click', function (){
+        $('.admin-drop-zone-content').removeClass('d-none')
+        $('.admin-close-drop-zone').removeClass('d-flex')
+        $('.admin-drop-zone-image').attr('src', '').show();
+        $('.photo-input').val('')
+    })
+    $('.admin-drop-zone').on('dragover', function(event) {
+        event.preventDefault();
+        $('.admin-drop-zone').addClass('dragover');
+    });
+    $('.admin-drop-zone').on('dragleave', function(event) {
+        event.preventDefault();
+        $('.admin-drop-zone').removeClass('dragover');
+    });
+    $('.admin-drop-zone').on('drop', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $('.admin-drop-zone').removeClass('dragover');
+        let file = event.originalEvent.dataTransfer.files;
+        $('.photo-input').prop('files', file);
+        load_photo_drop_zone(file[0])
+    })
 })

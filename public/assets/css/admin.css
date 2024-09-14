@@ -114,7 +114,7 @@
 .null{
     color: gray;
 }
-.admin-table-show-model{
+.admin-table-container{
     max-width: 100%;
     overflow-x: auto;
 }
@@ -128,7 +128,7 @@
 
 .btn-main-b, .btn-main-r{
     color: white;
-
+    cursor: pointer;
     transition-duration: 0.3s;
     border-radius: 5px;
     padding: 2px 10px;
@@ -223,4 +223,49 @@
 .required-label{
     color: var(--danger);
     font-size: 18px;
+}
+.photo-input{
+    display: none;
+}
+.admin-drop-zone{
+    border: 1px solid #ced4da;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    width: 380px;
+    height: 280px;
+    transition-duration: 0.3s;
+}
+.admin-drop-zone i{
+    font-size: 150px;
+    margin: 10px;
+}
+.admin-drop-zone:hover{
+    border: 1px solid var(--m-collor-r);
+}
+.admin-drop-zone-image{
+    position: absolute;
+    height: auto;
+    min-width: 100px;
+    min-height: 70px;
+    max-width: 350px;
+    max-height: 250px;
+}
+.admin-drop-zone-content{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+.admin-close-drop-zone{
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.dragover{
+    border: 1px dashed var(--m-collor-r);
 }

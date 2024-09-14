@@ -19,22 +19,23 @@
                 </div>
             </div>
         </form>
-        <table class="table table-bordered mb-0 table-hover table-show-model">
-            <thead>
-            <tr>
-                <th>
-                    <div class="check-all-show-model">
-                        <label for="check_all_show_model" class="m-0 text-nowrap">Отметиь все</label>
-                        <div class="d-flex justify-content-center"><input id="check_all_show_model" type="checkbox"></div>
-                    </div>
-                </th>
-                @foreach($columns as $col)
-                    <th>{{$col}}</th>
-                @endforeach
+        <div class="admin-table-container">
+            <table class="table table-bordered mb-0 table-hover table-show-model">
+                <thead>
+                <tr>
+                    <th>
+                        <div class="check-all-show-model">
+                            <label for="check_all_show_model" class="m-0 text-nowrap">Отметиь все</label>
+                            <div class="d-flex justify-content-center"><input id="check_all_show_model" type="checkbox"></div>
+                        </div>
+                    </th>
+                    @foreach($columns as $col)
+                        <th>{{$col}}</th>
+                    @endforeach
 
-            </tr>
-            </thead>
-            <tbody>
+                </tr>
+                </thead>
+                <tbody>
                 @foreach($model as $val)
                     <tr class="row-object">
                         <td><div class="d-flex justify-content-center"><input type="checkbox" class="checkbox-show-model"></div></td>
@@ -52,8 +53,10 @@
                         @endforeach
                     </tr>
                 @endforeach
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+
         <div class="card-footer clearfix mb-3">
             <ul class="pagination pagination-sm m-0 float-left">
                 <li class="page-item page-link pagination-prev">«</li>
