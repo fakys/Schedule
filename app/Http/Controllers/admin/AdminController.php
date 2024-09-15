@@ -65,7 +65,7 @@ class AdminController extends Controller
             $data = array_merge($request->post(), $request->file());
             if(validate($data, $table::rules())){
 
-                $new_model = new $table($request->post());
+                $new_model = $table::object($request->post());
                 if($request->file()){
                     $new_model->loadFiles($request->file());
                 }

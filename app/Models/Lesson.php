@@ -2,16 +2,23 @@
 
 namespace App\Models;
 
+use App\Traits\ObjectModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
     use HasFactory;
+    use ObjectModel;
+
+    public static array $technical_fields= ['teachers'];
+
+    public $fillable = ['name', 'description', 'teachers'];
 
     protected $table = 'lessons';
 
-    public $fillable = ['name', 'description', 'teachers'];
+
+
 
     public static $connected_models = [
         'teachers'=>Teacher::class
@@ -44,8 +51,7 @@ class Lesson extends Model
 
     private static function add_teacher($model)
     {
-        dd($model->teachers);
-        foreach ($model->teachers as $val){
+        foreach ($model->get_technical_fields('teachers') as $val){
             $teachers_lessons = new TeachersLessons();
             $teachers_lessons->teacher_id = $val;
             $teachers_lessons->lesson_id = $model->id;
@@ -56,9 +62,7 @@ class Lesson extends Model
     protected static function booted()
     {
         self::creating(function ($model){
-            if($model->teachers){
-                unset($model->teachers);
-            }
+
         });
         static::created(function ($model) {
             self::add_teacher($model);

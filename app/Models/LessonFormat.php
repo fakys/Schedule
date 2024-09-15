@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\ObjectModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class LessonFormat extends Model
 {
     use HasFactory;
+    use ObjectModel;
+
+    public static array $technical_fields= [];
 
     protected $table = 'lesson_formats';
 

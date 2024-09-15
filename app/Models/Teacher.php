@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-use App\View\Components\CreateTeacherComponent;
+use App\Traits\ObjectModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
     use HasFactory;
+    use ObjectModel;
+
+    public static array $technical_fields= [];
     public $table= 'teachers';
 
     public static function nameTable(){

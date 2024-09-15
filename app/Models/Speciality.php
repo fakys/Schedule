@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\ObjectModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Speciality extends Model
 {
     use HasFactory;
+    use ObjectModel;
+
+    public static array $technical_fields= [];
+
     protected $table='specialities';
 
     public static function nameTable(){
@@ -34,7 +39,7 @@ class Speciality extends Model
     {
         return [
             'name'=>['required', 'string', 'unique:specialities,name'],
-            'number'=>['required', 'integer', 'unique:specialities,name', 'max:9'],
+            'number'=>['required', 'integer', 'unique:specialities,name', 'max:999999999'],
         ];
     }
 }
