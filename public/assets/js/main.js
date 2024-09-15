@@ -1,75 +1,78 @@
-$(document).ready(function (){
+$(document).ready(function () {
     $('.nav-admin-item').hover(
-        function (){
+        function () {
             $(this).find('p').addClass('c-red')
             $(this).find('i').addClass('c-red')
             $(this).addClass('b-red')
         },
-        function (){
+        function () {
             $(this).removeClass('b-red')
 
             $(this).find('p').removeClass('c-red')
             $(this).find('i').removeClass('c-red')
         },
     )
-    $('.collapse-admin-index-block').on('click', function (){
+    $('.collapse-admin-index-block').on('click', function () {
         let block = $(this).parent().next();
         block.addClass('close-index-body')
         $(this).addClass('d-none')
         $(this).next().removeClass('d-none')
     })
-    $('.open-admin-index-block').on('click', function (){
+    $('.open-admin-index-block').on('click', function () {
         let block = $(this).parent().next();
         block.removeClass('close-index-body')
         $(this).addClass('d-none')
         $(this).prev().removeClass('d-none')
     })
-    $('#check_all_show_model').on('click', function (){
-        if($(this).prop("checked")){
-            for ( let i of $('.checkbox-show-model')){
+    $('#check_all_show_model').on('click', function () {
+        if ($(this).prop("checked")) {
+            for (let i of $('.checkbox-show-model')) {
                 i.checked = true
             }
             checked()
-        }else {
-            for ( let i of $('.checkbox-show-model')){
+        } else {
+            for (let i of $('.checkbox-show-model')) {
                 i.checked = false
             }
             end_checked()
         }
     })
-    function checked(){
-        for (let i of $('.btn-show-model')){
+
+    function checked() {
+        for (let i of $('.btn-show-model')) {
             i.classList.remove('d-none')
         }
     }
-    function has_checked(){
+
+    function has_checked() {
         let checked = false;
-        for (let i of $('.checkbox-show-model')){
-            if (i.checked){
+        for (let i of $('.checkbox-show-model')) {
+            if (i.checked) {
                 checked = true
             }
         }
         return checked;
     }
-    function end_checked(){
-        if(!has_checked()){
-            for (let i of $('.btn-show-model')){
+
+    function end_checked() {
+        if (!has_checked()) {
+            for (let i of $('.btn-show-model')) {
                 i.classList.add('d-none')
             }
             $('#check_all_show_model').prop('checked', false)
         }
     }
-    $('.checkbox-show-model').change(function (){
-        if($(this).prop('checked')){
+
+    $('.checkbox-show-model').change(function () {
+        if ($(this).prop('checked')) {
             checked()
-        }else{
+        } else {
             end_checked()
         }
     })
 
 
-
-    $('.checkbox-show-model').each(function (){
+    $('.checkbox-show-model').each(function () {
         let pages = [];
         let context_page = 0
         let rows = $('.row-object');
@@ -77,52 +80,54 @@ $(document).ready(function (){
         let context_paginate = 0
 
 
-        if(rows.length>15){
-            let num_page=-1
-            for (let i=0; i<=rows.length-1; i++){
-                if(i===0 || i%15===0){
+        if (rows.length > 15) {
+            let num_page = -1
+            for (let i = 0; i <= rows.length - 1; i++) {
+                if (i === 0 || i % 15 === 0) {
                     pages.push([$('.row-object')[i]]);
-                    num_page+=1;
-                }else {
+                    num_page += 1;
+                } else {
                     pages[num_page].push(rows[i])
                 }
 
             }
-        }else{
+        } else {
             pages.push($('.row-object'))
             $('.pagination').addClass('d-none')
         }
 
         let num_btn = -1
-        for(let i=0; i<=pages.length-1; i++){
-            if(i===0 || i%3===0){
+        for (let i = 0; i <= pages.length - 1; i++) {
+            if (i === 0 || i % 3 === 0) {
                 let page_item = $("<li class='page-item page-link pagination-page-item'>")
-                page_item.text(i+1)
+                page_item.text(i + 1)
                 paginate_btn.push([page_item])
-                num_btn+=1
-            }else {
+                num_btn += 1
+            } else {
                 let page_item = $("<li class='page-item page-link pagination-page-item'>")
-                page_item.text(i+1)
+                page_item.text(i + 1)
                 paginate_btn[num_btn].push(page_item)
             }
         }
-        function update_table(pages, context_page){
-            if(pages.length > context_page && 0 <= context_page){
-                for(let i of $('.active-row')){
+
+        function update_table(pages, context_page) {
+            if (pages.length > context_page && 0 <= context_page) {
+                for (let i of $('.active-row')) {
                     i.classList.remove('active-row')
                 }
-                for (let i of pages[context_page]){
+                for (let i of pages[context_page]) {
                     i.classList.add('active-row')
                 }
             }
 
         }
+
         function has_paginate() {
-            let num = context_page+1
-            for(let i = 0; i<=paginate_btn.length-1; i++){
-                for(let elem = 0; elem<=paginate_btn[i].length-1; elem++){
-                    if(paginate_btn[i][elem].text() == num){
-                        return {'page':i, 'id':elem};
+            let num = context_page + 1
+            for (let i = 0; i <= paginate_btn.length - 1; i++) {
+                for (let elem = 0; elem <= paginate_btn[i].length - 1; elem++) {
+                    if (paginate_btn[i][elem].text() == num) {
+                        return {'page': i, 'id': elem};
                     }
                 }
             }
@@ -132,23 +137,23 @@ $(document).ready(function (){
         function update_paginate() {
             let bnt_data = has_paginate();
 
-            if(bnt_data.page !==context_paginate){
+            if (bnt_data.page !== context_paginate) {
 
-                for(let i of paginate_btn[context_paginate]){
+                for (let i of paginate_btn[context_paginate]) {
                     i.addClass('d-none')
                 }
-                for(let i of paginate_btn[bnt_data.page]){
+                for (let i of paginate_btn[bnt_data.page]) {
                     i.removeClass('d-none')
                 }
             }
             context_paginate = bnt_data.page
-            for(let i=0;i<=paginate_btn.length-1; i++){
-                for(let page of paginate_btn[i]){
-                    if(page.text() == context_page+1){
+            for (let i = 0; i <= paginate_btn.length - 1; i++) {
+                for (let page of paginate_btn[i]) {
+                    if (page.text() == context_page + 1) {
                         $('.active-paginate').removeClass('active-paginate')
                         page.addClass('active-paginate')
                     }
-                    if(bnt_data.page !== i){
+                    if (bnt_data.page !== i) {
                         page.addClass('d-none')
                     }
                     $('.pages-items').append(page)
@@ -163,22 +168,22 @@ $(document).ready(function (){
 
 
         //События
-        $('.pagination-page-item').on('click', function (){
-            context_page  = Number($(this).text())-1
+        $('.pagination-page-item').on('click', function () {
+            context_page = Number($(this).text()) - 1
             update_table(pages, context_page)
             update_paginate()
         })
 
-        $('.pagination-prev').on('click', function (){
-            if(context_page>=1){
-                context_page-=1;
+        $('.pagination-prev').on('click', function () {
+            if (context_page >= 1) {
+                context_page -= 1;
                 update_table(pages, context_page)
                 update_paginate()
             }
         })
-        $('.pagination-next').on('click', function (){
-            if(context_page<pages.length-1){
-                context_page+=1;
+        $('.pagination-next').on('click', function () {
+            if (context_page < pages.length - 1) {
+                context_page += 1;
                 update_table(pages, context_page)
                 update_paginate()
             }
@@ -187,17 +192,18 @@ $(document).ready(function (){
     })
 
 
-    $('.admin-drop-zone').each(function (){
+    $('.admin-drop-zone').each(function () {
         let input_drop_zone = $('.photo-input');
         let drop_zone = $('.admin-drop-zone');
-        function load_photo_drop_zone(file){
+
+        function load_photo_drop_zone(file) {
             if (file) {
                 const reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     let file_name = file.name
-                    if(file_name.length >=20){
-                        file_name = file_name.substring(0, 20)+"...";
+                    if (file_name.length >= 20) {
+                        file_name = file_name.substring(0, 20) + "...";
                     }
                     $('.name-image-drop-zone').text(file_name)
                     $('.admin-drop-zone-content').addClass('d-none')
@@ -209,26 +215,26 @@ $(document).ready(function (){
             }
         }
 
-        input_drop_zone.on('change',function (){
+        input_drop_zone.on('change', function () {
             let file = $(this).prop('files')[0];
             load_photo_drop_zone(file)
         })
-        $('.admin-close-drop-zone').on('click', function (){
+        $('.admin-close-drop-zone').on('click', function () {
             $('.admin-drop-zone-content').removeClass('d-none')
             $('.admin-close-drop-zone').removeClass('d-flex')
             $('.admin-drop-zone-image').attr('src', '').show();
             input_drop_zone.val('')
             $('.name-image-drop-zone').text('')
         })
-        drop_zone.on('dragover', function(event) {
+        drop_zone.on('dragover', function (event) {
             event.preventDefault();
             drop_zone.addClass('dragover');
         });
-        drop_zone.on('dragleave', function(event) {
+        drop_zone.on('dragleave', function (event) {
             event.preventDefault();
             drop_zone.removeClass('dragover');
         });
-        drop_zone.on('drop', function(event) {
+        drop_zone.on('drop', function (event) {
             event.preventDefault();
             event.stopPropagation();
             drop_zone.removeClass('dragover');
@@ -237,4 +243,6 @@ $(document).ready(function (){
             load_photo_drop_zone(file[0])
         })
     })
+
+
 })

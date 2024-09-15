@@ -6,7 +6,7 @@
     @csrf
     <div class="form-body">
         <div class="form-group">
-            <label>Имя <i class="required-label">*</i></label>
+            <label>Название <i class="required-label">*</i></label>
             <input type="text" class="form-control @if($errors->has('name')) {{'is-invalid'}} @endif" name="name" value="{{ old('name') }}" placeholder="Введите название">
             @if($errors->has('name'))
                 <div class="error">{{$errors->first('name')}}</div>

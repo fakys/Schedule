@@ -6,6 +6,7 @@
   <title>AdminLTE 3 | Dashboard</title>
 
     <link rel="stylesheet" href="{{asset('assets/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap-duallistbox.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/admin.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/all.css')}}">
 </head>
@@ -304,5 +305,15 @@
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/adminlte.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery.bootstrap-duallistbox.js')}}"></script>
+
+
+<script>
+    $(function () {
+        $('.duallistbox').bootstrapDualListbox()
+    })
+</script>
+
+
 </body>
 </html>

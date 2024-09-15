@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
-    protected $table= 'teachers';
+    public $table= 'teachers';
 
     public static function nameTable(){
         return 'teachers';
@@ -47,13 +47,13 @@ class Teacher extends Model
     public static function rules(): array
     {
         return [
-            'name'=>['required', 'string'],
-            'surname'=>['required', 'string'],
-            'patronymic'=>['string'],
+            'name'=>['required', 'string', 'between:3,40'],
+            'surname'=>['required', 'string', 'between:3,40'],
+            'patronymic'=>['string', 'between:3,40'],
             'email'=>['required', 'email', 'unique:teachers,email'],
             'avatar'=>['image','mimes:jpeg', 'max:1024'],
             'date_birth'=>['date', 'before:today'],
-            'number'=>['integer'],
+            'number'=>['string', 'between:11, 11'],
         ];
     }
 

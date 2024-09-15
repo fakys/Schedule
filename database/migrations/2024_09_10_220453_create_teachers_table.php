@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('surname');
             $table->string('patronymic')->nullable();
             $table->string('email')->unique();
-            $table->integer('number')->nullable()->unique();
+            $table->string('number')->nullable()->unique();
             $table->text('avatar')->nullable();
             $table->date('date_birth')->nullable();
             $table->timestamps();
