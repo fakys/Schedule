@@ -42,13 +42,13 @@
                         @foreach($columns as $col)
                             @if($val->$col)
                                 @if(in_array($col, $val->getMainFields()))
-                                    <td><a href="#">{{$val->$col}}</a></td>
+                                    <td><a href="#">{{\Illuminate\Support\Str::limit($val->$col, 50)}}</a></td>
                                 @elseif($val->image_fields && in_array($col, $val->image_fields))
                                     <td>
                                         <img src="{{asset($val->$col)}}" class="image-show-model"/>
                                     </td>
                                 @else
-                                    <td>{{$val->$col}}</td>
+                                    <td>{{\Illuminate\Support\Str::limit($val->$col, 50)}}</td>
                                 @endif
 
                             @else
@@ -62,6 +62,9 @@
         </div>
 
         <div class="card-footer clearfix mb-3">
+            <div class="null-show-table @if($model->isEmpty()) {{'d-block'}} @endif">
+                Здесть пока ничего нет
+            </div>
             <ul class="pagination pagination-sm m-0 float-left">
                 <li class="page-item page-link pagination-prev">«</li>
                 <div class="pages-items">

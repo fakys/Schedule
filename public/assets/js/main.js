@@ -72,13 +72,12 @@ $(document).ready(function () {
     })
 
 
-    $('.checkbox-show-model').each(function () {
+    $('.admin-table-show-model').each(function () {
         let pages = [];
         let context_page = 0
         let rows = $('.row-object');
         let paginate_btn = []
         let context_paginate = 0
-
 
         if (rows.length > 15) {
             let num_page = -1

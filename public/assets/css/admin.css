@@ -283,3 +283,8 @@
     max-height: 40px;
     max-width: 50px;
 }
+.null-show-table{
+    text-align: center;
+    font-size: 25px;
+    display: none;
+}

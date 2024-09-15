@@ -17,9 +17,6 @@ class Lesson extends Model
 
     protected $table = 'lessons';
 
-
-
-
     public static $connected_models = [
         'teachers'=>Teacher::class
     ];

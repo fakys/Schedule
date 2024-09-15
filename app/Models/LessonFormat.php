@@ -14,6 +14,7 @@ class LessonFormat extends Model
     public static array $technical_fields= [];
 
     protected $table = 'lesson_formats';
+    protected $fillable = ['name', 'description'];
 
     public static function nameTable(){
         return 'lesson_formats';
@@ -23,6 +24,17 @@ class LessonFormat extends Model
         return [
             'name',
             'description'
+        ];
+    }
+    public static function ru_nameTable()
+    {
+        return 'Формат предметов';
+    }
+    public static function rules()
+    {
+        return [
+            'name'=>['required', 'string', 'unique:lesson_formats,name', 'between:3,30'],
+            'description'=>['string', 'between:3,2000']
         ];
     }
 }

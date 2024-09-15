@@ -13,8 +13,14 @@ class DurationBreak extends Model
 
     public static array $technical_fields= [];
 
+    public $fillable=['name', 'number_breaks', 'time_start', 'time_end'];
+
     public static function nameTable(){
         return 'duration_breaks';
+    }
+    public static function ru_nameTable()
+    {
+        return 'Перерывы';
     }
 
     public static function getMainFields()
@@ -24,6 +30,15 @@ class DurationBreak extends Model
             'number_breaks',
             'time_start',
             'time_end'
+        ];
+    }
+    public static function rules()
+    {
+        return  [
+            'name'=>['string', 'unique:duration_breaks,name', 'between:3,40'],
+            'number_breaks'=>['required','integer', 'between:1,6'],
+            'time_start'=>['required','date_format:H:i'],
+            'time_end'=>['required','date_format:H:i']
         ];
     }
 }
