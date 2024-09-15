@@ -26,7 +26,6 @@ class Teacher extends Model
             'surname',
             'patronymic',
             'email',
-            'avatar'
         ];
     }
 
@@ -41,14 +40,18 @@ class Teacher extends Model
 
     ];
 
+    public $image_fields = [
+        'avatar'
+    ];
+
     public static function rules(): array
     {
         return [
             'name'=>['required', 'string'],
             'surname'=>['required', 'string'],
             'patronymic'=>['string'],
-            'email'=>['required', 'email'],
-            'avatar'=>['image','mimes:jpeg,png', 'max:1024'],
+            'email'=>['required', 'email', 'unique:teachers,email'],
+            'avatar'=>['image','mimes:jpeg', 'max:1024'],
             'date_birth'=>['date', 'before:today'],
             'number'=>['integer'],
         ];

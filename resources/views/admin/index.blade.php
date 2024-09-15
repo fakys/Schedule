@@ -18,7 +18,7 @@
                     @foreach($teachers::all() as $teacher)
                         <tr>
                             <th scope="row">{{$teacher->id}}</th>
-                            <td class="d-flex justify-content-center align-items-center"><img src="{{$teacher->avatar?'':asset('assets/img/user/start_user_ava.jpg')}}" width="20"></td>
+                            <td class="d-flex justify-content-center align-items-center">@if($teacher->avatar)<img src="{{asset($teacher->avatar)}}" width="20">@else<div class = 'null'>Null</div>@endif</td>
                             <td>{{Str::limit($teacher->surname, 15)}}</td>
                             <td>{{Str::limit($teacher->email, 15)}}</td>
                             <td><a href="#" class="btn btn-success p-0 pl-1 pr-1 text-nowrap"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</a></td>

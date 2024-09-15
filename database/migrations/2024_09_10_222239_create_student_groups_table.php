@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('specialities', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->integer('number');
+            $table->bigInteger('number');
             $table->timestamps();
         });
         Schema::create('student_groups', function (Blueprint $table) {

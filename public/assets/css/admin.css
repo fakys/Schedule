@@ -232,7 +232,9 @@
     padding: 10px;
     border-radius: 10px;
     display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
     cursor: pointer;
     width: 380px;
     height: 280px;
@@ -242,11 +244,16 @@
     font-size: 150px;
     margin: 10px;
 }
+.name-image-drop-zone{
+    text-align: center;
+    font-size: 18px;
+}
 .admin-drop-zone:hover{
     border: 1px solid var(--m-collor-r);
 }
 .admin-drop-zone-image{
     position: absolute;
+    border-radius: 5px;
     height: auto;
     min-width: 100px;
     min-height: 70px;
@@ -268,4 +275,11 @@
 }
 .dragover{
     border: 1px dashed var(--m-collor-r);
+}
+.invalid-drop-zone{
+    border: 1px solid var(--danger);
+}
+.image-show-model{
+    max-height: 40px;
+    max-width: 50px;
 }

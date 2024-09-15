@@ -14,10 +14,27 @@ class Speciality extends Model
         return 'specialities';
     }
 
+    public $fillable=[
+        'name',
+        'number'
+    ];
+
+
     public static function getMainFields()
     {
         return [
             'name'
+        ];
+    }
+    public static function ru_nameTable()
+    {
+        return 'Специальности';
+    }
+    public static function rules()
+    {
+        return [
+            'name'=>['required', 'string', 'unique:specialities,name'],
+            'number'=>['required', 'integer', 'unique:specialities,name', 'max:9'],
         ];
     }
 }

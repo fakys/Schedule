@@ -43,6 +43,10 @@
                             @if($val->$col)
                                 @if(in_array($col, $val->getMainFields()))
                                     <td><a href="#">{{$val->$col}}</a></td>
+                                @elseif($val->image_fields && in_array($col, $val->image_fields))
+                                    <td>
+                                        <img src="{{asset($val->$col)}}" class="image-show-model"/>
+                                    </td>
                                 @else
                                     <td>{{$val->$col}}</td>
                                 @endif

@@ -42,9 +42,9 @@
             </div>
             <div class="admin-form-photo-block">
                 <div class="form-group d-flex gap-2">
-                    <div>
+                    <div class="admin-drop-zone-container">
                         <label>Фотография</label>
-                        <label for="admin-photo-input" class="admin-drop-zone">
+                        <label for="admin-photo-input" class="admin-drop-zone @if($errors->has('avatar')) invalid-drop-zone @endif">
                             <div class="d-flex justify-content-center align-items-center">
                                 <img src="" class="admin-drop-zone-image">
                             </div>
@@ -55,6 +55,10 @@
                                 </div>
                             </div>
                         </label>
+                        <div class="name-image-drop-zone"></div>
+                        @if($errors->has('avatar'))
+                            <div class="error">{{$errors->first('avatar')}}</div>
+                        @endif
                     </div>
                     <div class="pt-5">
                         <div class="btn-main-r admin-close-drop-zone">
@@ -62,9 +66,6 @@
                         </div>
                     </div>
                     <input type="file" id="admin-photo-input" accept=".png, .jpg, .jpeg" class="form-control @if($errors->has('avatar')) {{'is-invalid'}} @endif photo-input" name="avatar">
-                    @if($errors->has('avatar'))
-                        <div class="error">{{$errors->first('avatar')}}</div>
-                    @endif
                 </div>
             </div>
             <div class="form-group">

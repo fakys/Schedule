@@ -106,8 +106,6 @@ $(document).ready(function (){
                 paginate_btn[num_btn].push(page_item)
             }
         }
-
-
         function update_table(pages, context_page){
             if(pages.length > context_page && 0 <= context_page){
                 for(let i of $('.active-row')){
@@ -119,7 +117,6 @@ $(document).ready(function (){
             }
 
         }
-
         function has_paginate() {
             let num = context_page+1
             for(let i = 0; i<=paginate_btn.length-1; i++){
@@ -190,44 +187,54 @@ $(document).ready(function (){
     })
 
 
-    function load_photo_drop_zone(file){
-        if (file) {
-            const reader = new FileReader();
+    $('.admin-drop-zone').each(function (){
+        let input_drop_zone = $('.photo-input');
+        let drop_zone = $('.admin-drop-zone');
+        function load_photo_drop_zone(file){
+            if (file) {
+                const reader = new FileReader();
 
-            reader.onload = function(e) {
-                $('.admin-drop-zone-content').addClass('d-none')
-                $('.admin-close-drop-zone').addClass('d-flex')
-                $('.admin-drop-zone-image').attr('src', e.target.result).show();
-            };
+                reader.onload = function(e) {
+                    let file_name = file.name
+                    if(file_name.length >=20){
+                        file_name = file_name.substring(0, 20)+"...";
+                    }
+                    $('.name-image-drop-zone').text(file_name)
+                    $('.admin-drop-zone-content').addClass('d-none')
+                    $('.admin-close-drop-zone').addClass('d-flex')
+                    $('.admin-drop-zone-image').attr('src', e.target.result).show();
+                };
 
-            reader.readAsDataURL(file);
+                reader.readAsDataURL(file);
+            }
         }
-    }
 
-    $('.photo-input').on('change',function (){
-        let file = event.target.files[0];
-        load_photo_drop_zone(file)
-    })
-    $('.admin-close-drop-zone').on('click', function (){
-        $('.admin-drop-zone-content').removeClass('d-none')
-        $('.admin-close-drop-zone').removeClass('d-flex')
-        $('.admin-drop-zone-image').attr('src', '').show();
-        $('.photo-input').val('')
-    })
-    $('.admin-drop-zone').on('dragover', function(event) {
-        event.preventDefault();
-        $('.admin-drop-zone').addClass('dragover');
-    });
-    $('.admin-drop-zone').on('dragleave', function(event) {
-        event.preventDefault();
-        $('.admin-drop-zone').removeClass('dragover');
-    });
-    $('.admin-drop-zone').on('drop', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        $('.admin-drop-zone').removeClass('dragover');
-        let file = event.originalEvent.dataTransfer.files;
-        $('.photo-input').prop('files', file);
-        load_photo_drop_zone(file[0])
+        input_drop_zone.on('change',function (){
+            let file = $(this).prop('files')[0];
+            load_photo_drop_zone(file)
+        })
+        $('.admin-close-drop-zone').on('click', function (){
+            $('.admin-drop-zone-content').removeClass('d-none')
+            $('.admin-close-drop-zone').removeClass('d-flex')
+            $('.admin-drop-zone-image').attr('src', '').show();
+            input_drop_zone.val('')
+            $('.name-image-drop-zone').text('')
+        })
+        drop_zone.on('dragover', function(event) {
+            event.preventDefault();
+            drop_zone.addClass('dragover');
+        });
+        drop_zone.on('dragleave', function(event) {
+            event.preventDefault();
+            drop_zone.removeClass('dragover');
+        });
+        drop_zone.on('drop', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            drop_zone.removeClass('dragover');
+            let file = event.originalEvent.dataTransfer.files;
+            input_drop_zone.prop('files', file);
+            load_photo_drop_zone(file[0])
+        })
     })
 })
