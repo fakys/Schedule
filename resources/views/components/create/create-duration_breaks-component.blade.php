@@ -22,7 +22,13 @@
         </div>
         <div class="form-group">
             <label>Длительность в минутах</label>
-            <input type="number" class="form-control @if($errors->has('duration_minutes')) {{'is-invalid'}} @endif" name="duration_minutes" value="{{ old('duration_minutes') }}" placeholder="Введите длительность в минутах">
+            <input list="defaultNumbers" step='5' type="number" class="form-control input_minutes @if($errors->has('duration_minutes')) {{'is-invalid'}} @endif" name="duration_minutes" value="{{ old('duration_minutes') }}" placeholder="Введите длительность в минутах">
+            <datalist id="defaultNumbers">
+                <option value="10"></option>
+                <option value="15"></option>
+                <option value="20"></option>
+                <option value="30"></option>
+            </datalist>
             @if($errors->has('duration_minutes'))
                 <div class="error">{{$errors->first('duration_minutes')}}</div>
             @endif

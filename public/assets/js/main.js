@@ -242,6 +242,8 @@ $(document).ready(function () {
             load_photo_drop_zone(file[0])
         })
     })
-
+    $('.input_minutes').on('input', function (){
+        console.log(321)
+    })
 
 })

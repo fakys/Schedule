@@ -29,7 +29,7 @@ class AdminController extends Controller
         $lessons = Lesson::class;
         $lesson_formats= LessonFormat::class;
         $duration_breaks = DurationBreak::class;
-        return view('admin.index', compact('teachers', 'student_groups', 'specialities', 'lessons', 'lesson_formats', 'duration_breaks'));
+        return view('admin.index', compact( 'teachers', 'student_groups', 'specialities', 'lessons', 'lesson_formats', 'duration_breaks'));
     }
     public function show_model($table, Request $request)
     {
@@ -39,19 +39,21 @@ class AdminController extends Controller
         }else{
             $model = $this->getTableByName($table)::all();
         }
+        $title = "Таблица '{$this->getTableByName($table)::ru_nameTable()}'";
         if(!$model){
             abort(404);
         }else{
             $columns = Schema::getColumnListing($table);
         }
-        return view('admin.show_model', compact('model', 'columns', 'table'));
+        return view('admin.show_model', compact('model', 'columns', 'table', 'title'));
     }
 
     public function create_model($table)
     {
         $table = $this->getTableByName($table);
         if($table){
-            return view('admin.create', ['model'=>$table]);
+            $title = "Создание в таблице '{$table::ru_nameTable()}'";
+            return view('admin.create', ['model'=>$table, 'title'=>$title]);
         }else{
             abort(404);
         }
