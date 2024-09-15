@@ -43,7 +43,7 @@
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" type="search" placeholder="Поиск таблицы" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -181,14 +181,6 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <li class="nav-header">Обучение</li>
 
-              <li class="nav-admin-item">
-                  <a href="#" class="nav-link">
-                      <i class="nav-icon far fa-calendar-alt nav-fa-icon"></i>
-                      <p class="nav-link-text">
-                          Расписания
-                      </p>
-                  </a>
-              </li>
 
               <li class="nav-admin-item">
                   <a href="#" class="nav-link">
@@ -199,7 +191,7 @@
                   </a>
               </li>
               <li class="nav-admin-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{route('admin.show_model', ['table'=>\App\Models\StudentGroup::nameTable()])}}" class="nav-link">
                       <i class="fa fa-users nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Группы
@@ -207,7 +199,7 @@
                   </a>
               </li>
               <li class="nav-admin-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{route('admin.show_model', ['table'=>\App\Models\Lesson::nameTable()])}}" class="nav-link">
                       <i class="fa fa-book nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Предметы
@@ -215,7 +207,7 @@
                   </a>
               </li>
               <li class="nav-admin-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{route('admin.show_model', ['table'=>\App\Models\DurationBreak::nameTable()])}}" class="nav-link">
                       <i class="fa fa-coffee nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Перерывы
