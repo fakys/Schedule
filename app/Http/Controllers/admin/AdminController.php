@@ -94,8 +94,7 @@ class AdminController extends Controller
             foreach ($arr_id as $id){
                 $model::find($id)->delete();
             }
-            return true;
         }
-        return false;
+        return redirect()->route('admin.show_model', ['table'=>$table]);
     }
 }

@@ -302,6 +302,8 @@
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/adminlte.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
+<script src="{{asset('assets/js/drop_zone.js')}}"></script>
+<script src="{{asset('assets/js/paginate.js')}}"></script>
 <script src="{{asset('assets/js/plugins/jquery.bootstrap-duallistbox.js')}}"></script>
 
 

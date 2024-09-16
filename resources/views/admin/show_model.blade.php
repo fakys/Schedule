@@ -22,7 +22,7 @@
         <div class="admin-table-container">
             <table class="table table-bordered mb-0 table-hover table-show-model">
                 <thead>
-                <tr>
+                <tr class="row-thead-show-model">
                     <th>
                         <div class="check-all-show-model">
                             <label for="check_all_show_model" class="m-0 text-nowrap">Отметиь все</label>
@@ -30,7 +30,7 @@
                         </div>
                     </th>
                     @foreach($columns as $col)
-                        <th>{{$model::get_ru_field($col)}}</th>
+                        <th class="col-name-show-model">{{$model::get_ru_field($col)}}</th>
                     @endforeach
 
                 </tr>
@@ -77,5 +77,5 @@
             </ul>
         </div>
     </div>
-    <x-delete-component model="{{$model}}"></x-delete-component>
+    <x-delete-component model="{{$model}}" ></x-delete-component>
 @endsection

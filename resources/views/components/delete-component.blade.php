@@ -32,11 +32,11 @@
                         <tbody>
                         @foreach($model::all() as $data)
                             <tr class="delete-objects delete-object-{{$data->id}}">
-                                <th scope="col"><div class="d-flex justify-content-center"><input type="checkbox" name="deleted[]" checked class="check-row-delete-panel" value="{{$data->id}}"></div></th>
+                                <th scope="col"><div class="d-flex justify-content-center"><input type="checkbox" name="deleted[]" class="check-row-delete-panel" value="{{$data->id}}"></div></th>
                                 @foreach($data->toArray() as $key=>$val)
                                     @if(in_array($key, $model::getMainFields()))
                                         @if($val)
-                                        <td>{{Str::limit($val, 15)}}</td>
+                                            <td>{{Str::limit($val, 15)}}</td>
                                         @else
                                             <td><div class="null">Null</div></td>
                                         @endif

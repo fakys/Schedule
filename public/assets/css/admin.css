@@ -233,6 +233,12 @@
 .form-control:focus{
     border: 1px solid var(--m-collor-r);
 }
+.delete-objects{
+    display: none;
+}
+.active-row-delete-panel{
+    display: table-row;
+}
 .error{
     color: var(--danger);
     font-size: 12px;
@@ -256,9 +262,6 @@
     width: 380px;
     height: 280px;
     transition-duration: 0.3s;
-}
-.delete-objects{
-    display: none;
 }
 .admin-drop-zone i{
     font-size: 150px;
