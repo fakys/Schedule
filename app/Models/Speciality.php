@@ -15,16 +15,22 @@ class Speciality extends Model
 
     protected $table='specialities';
 
-    public static function nameTable(){
-        return 'specialities';
-    }
+
 
     public $fillable=[
         'name',
         'number'
     ];
+    protected static $ru_fields = [
+        'name'=>'Название',
+        'number'=>'Номер',
+        'created_at'=>'Время создания',
+        'updated_at'=>'Время обновления'
+    ];
 
-
+    public static function nameTable(){
+        return 'specialities';
+    }
     public static function getMainFields()
     {
         return [
@@ -41,5 +47,12 @@ class Speciality extends Model
             'name'=>['required', 'string', 'unique:specialities,name'],
             'number'=>['required', 'integer', 'unique:specialities,name', 'max:999999999'],
         ];
+    }
+    public static function get_ru_field($field)
+    {
+        if(isset(self::$ru_fields[$field])){
+            return self::$ru_fields[$field];
+        }
+        return null;
     }
 }

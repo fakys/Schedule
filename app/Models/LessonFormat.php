@@ -16,6 +16,13 @@ class LessonFormat extends Model
     protected $table = 'lesson_formats';
     protected $fillable = ['name', 'description'];
 
+    private static $ru_fields = [
+        'name'=>'Название',
+        'duration_minutes'=>'Длительность в минутах',
+        'created_at'=>'Время создания',
+        'updated_at'=>'Время обновления'
+    ];
+
     public static function nameTable(){
         return 'lesson_formats';
     }
@@ -36,5 +43,13 @@ class LessonFormat extends Model
             'name'=>['required', 'string', 'unique:lesson_formats,name', 'between:3,30'],
             'description'=>['string', 'between:3,2000']
         ];
+    }
+
+    public static function get_ru_field($field)
+    {
+        if(isset(self::$ru_fields[$field])){
+            return self::$ru_fields[$field];
+        }
+        return null;
     }
 }

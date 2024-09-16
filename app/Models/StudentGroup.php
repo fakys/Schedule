@@ -16,6 +16,13 @@ class StudentGroup extends Model
     protected $table='student_groups';
 
     protected $fillable = ['name', 'full_name', 'speciality_id'];
+    protected static $ru_fields = [
+        'name'=>'Название',
+        'full_name'=>'Полное название',
+        'speciality_id'=>'Специальность',
+        'created_at'=>'Время создания',
+        'updated_at'=>'Время обновления'
+    ];
 
     public static $connected_models = [
         'specialities'=>Speciality::class
@@ -48,5 +55,12 @@ class StudentGroup extends Model
             'full_name'=>['required', 'string', 'between:5,50', 'unique:student_groups,full_name'],
             'speciality_id'=>['required', 'integer']
         ];
+    }
+    public static function get_ru_field($field)
+    {
+        if(isset(self::$ru_fields[$field])){
+            return self::$ru_fields[$field];
+        }
+        return null;
     }
 }

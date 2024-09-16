@@ -13,6 +13,14 @@ class LessonDuration extends Model
 
     public static array $technical_fields= [];
 
+    protected $fillable = ['name', 'duration_minutes'];
+
+    private static $ru_fields = [
+        'name'=>'Название',
+        'duration_minutes'=>'Длительность в минутах',
+        'updated_at'=>'Время обновления'
+    ];
+
     protected $table = 'duration_lessons';
 
     public static function nameTable(){
@@ -25,5 +33,12 @@ class LessonDuration extends Model
             'name',
             'duration_minutes'
         ];
+    }
+    public static function get_ru_field($field)
+    {
+        if(isset(self::$ru_fields[$field])){
+            return self::$ru_fields[$field];
+        }
+        return null;
     }
 }

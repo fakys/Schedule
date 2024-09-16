@@ -12,6 +12,17 @@ class Teacher extends Model
     use ObjectModel;
 
     public static array $technical_fields= [];
+    protected static $ru_fields = [
+        'name'=>'Имя',
+        'surname'=>'Фамилия',
+        'patronymic'=>"Отчество",
+        'email'=>'Email',
+        'avatar'=>'Фотография',
+        'date_birth'=>'Дата рождения',
+        'number'=>"Номер телефона",
+        'created_at'=>'Время создания',
+        'updated_at'=>'Время обновления'
+    ];
     public $table= 'teachers';
 
     public static function nameTable(){
@@ -40,7 +51,6 @@ class Teacher extends Model
         'avatar',
         'date_birth',
         'number',
-
     ];
 
     public $image_fields = [
@@ -84,5 +94,12 @@ class Teacher extends Model
             $model->avatar = "assets/img/user/start_user_ava.jpg";
         }
 
+    }
+    public static function get_ru_field($field)
+    {
+        if(isset(self::$ru_fields[$field])){
+            return self::$ru_fields[$field];
+        }
+        return null;
     }
 }

@@ -2,12 +2,24 @@
 
 namespace App\Models;
 
+use App\Traits\ObjectModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class GroupBreak extends Model
 {
     use HasFactory;
+    use ObjectModel;
+
+    protected $fillable=['name', 'description'];
+    public static array $technical_fields = [];
+
+    private static $ru_fields = [
+        'name'=>'Название',
+        'description'=>'Описание',
+        'created_at'=>'Время создания',
+        'updated_at'=>'Время обновления'
+    ];
 
     public static function ru_nameTable()
     {
@@ -16,5 +28,28 @@ class GroupBreak extends Model
     public static function nameTable()
     {
         return 'group_breaks';
+    }
+
+    public static function rules()
+    {
+        return [
+            'name'=>['required', 'string', 'unique:group_breaks,name', 'between:3,30'],
+            'description'=>['string','between:20,1000']
+        ];
+    }
+    public function getMainFields(){
+        return [
+            'id',
+            'name',
+            'description'
+        ];
+    }
+
+    public static function get_ru_field($field)
+    {
+        if(isset(self::$ru_fields[$field])){
+            return self::$ru_fields[$field];
+        }
+        return null;
     }
 }

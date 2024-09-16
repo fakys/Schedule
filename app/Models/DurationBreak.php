@@ -13,7 +13,18 @@ class DurationBreak extends Model
 
     public static array $technical_fields= [];
 
-    public $fillable=['name', 'number_breaks', 'time_start', 'time_end', 'group_break_id'];
+    public $fillable=['name', 'number_breaks', 'time_start', 'time_end', 'group_break_id', 'duration_minutes'];
+
+    private static $ru_fields = [
+        'name'=>'Название',
+        'number_breaks'=>'Номер перерыва',
+        'time_start'=>'Время начала',
+        'time_end'=>'Время окончания',
+        'group_break_id'=>'Гуппа перерывов',
+        'duration_minutes'=>'Длительность в минутах',
+        'created_at'=>'Время создания',
+        'updated_at'=>'Время обновления'
+    ];
 
     public static $connected_models = [
         'group_breaks'=>GroupBreak::class
@@ -44,5 +55,13 @@ class DurationBreak extends Model
             'time_start'=>['required','date_format:H:i'],
             'time_end'=>['required','date_format:H:i']
         ];
+    }
+
+    public static function get_ru_field($field)
+    {
+        if(isset(self::$ru_fields[$field])){
+            return self::$ru_fields[$field];
+        }
+        return null;
     }
 }

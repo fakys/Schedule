@@ -15,6 +15,14 @@ class Lesson extends Model
 
     public $fillable = ['name', 'description', 'teachers'];
 
+    private static $ru_fields = [
+        'name'=>'Название',
+        'description'=>'Описание',
+        'teachers'=>'Преподователи',
+        'created_at'=>'Время создания',
+        'updated_at'=>'Время обновления'
+    ];
+
     protected $table = 'lessons';
 
     public static $connected_models = [
@@ -65,6 +73,12 @@ class Lesson extends Model
             self::add_teacher($model);
         });
     }
-
+    public static function get_ru_field($field)
+    {
+        if(isset(self::$ru_fields[$field])){
+            return self::$ru_fields[$field];
+        }
+        return null;
+    }
 
 }
