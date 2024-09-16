@@ -37,19 +37,20 @@ class AdminController extends Controller
     }
     public function show_model($table, Request $request)
     {
-
-        if($request->input('search')){
-            $model = $this->SearchInModel($this->getTableByName($table), $request->input('search'));
+        $search = $request->input('search');
+        if($search){
+            $data = $this->SearchInModel($this->getTableByName($table), $request->input('search'));
         }else{
-            $model = $this->getTableByName($table)::all();
+            $data = $this->getTableByName($table)::all();
         }
+        $model = $this->getTableByName($table);
         $title = "Таблица '{$this->getTableByName($table)::ru_nameTable()}'";
         if(!$model){
             abort(404);
         }else{
             $columns = Schema::getColumnListing($table);
         }
-        return view('admin.show_model', compact('model', 'columns', 'table', 'title'));
+        return view('admin.show_model', compact('data', 'columns', 'model', 'title', 'search'));
     }
 
     public function create_model($table)

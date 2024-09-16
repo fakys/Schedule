@@ -40,11 +40,4 @@ class Schedule extends Model
     {
         $this->hasOne(StudentGroup::class, 'student_group_id');
     }
-    public static function get_ru_field($field)
-    {
-        if(isset(self::$ru_fields[$field])){
-            return self::$ru_fields[$field];
-        }
-        return null;
-    }
 }

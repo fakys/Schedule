@@ -48,11 +48,4 @@ class Speciality extends Model
             'number'=>['required', 'integer', 'unique:specialities,name', 'max:999999999'],
         ];
     }
-    public static function get_ru_field($field)
-    {
-        if(isset(self::$ru_fields[$field])){
-            return self::$ru_fields[$field];
-        }
-        return null;
-    }
 }

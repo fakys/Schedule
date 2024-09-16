@@ -34,11 +34,4 @@ class LessonDuration extends Model
             'duration_minutes'
         ];
     }
-    public static function get_ru_field($field)
-    {
-        if(isset(self::$ru_fields[$field])){
-            return self::$ru_fields[$field];
-        }
-        return null;
-    }
 }

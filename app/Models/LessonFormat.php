@@ -18,7 +18,7 @@ class LessonFormat extends Model
 
     private static $ru_fields = [
         'name'=>'Название',
-        'duration_minutes'=>'Длительность в минутах',
+        'description'=>'Описание',
         'created_at'=>'Время создания',
         'updated_at'=>'Время обновления'
     ];
@@ -43,13 +43,5 @@ class LessonFormat extends Model
             'name'=>['required', 'string', 'unique:lesson_formats,name', 'between:3,30'],
             'description'=>['string', 'between:3,2000']
         ];
-    }
-
-    public static function get_ru_field($field)
-    {
-        if(isset(self::$ru_fields[$field])){
-            return self::$ru_fields[$field];
-        }
-        return null;
     }
 }
