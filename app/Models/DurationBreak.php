@@ -13,7 +13,11 @@ class DurationBreak extends Model
 
     public static array $technical_fields= [];
 
-    public $fillable=['name', 'number_breaks', 'time_start', 'time_end'];
+    public $fillable=['name', 'number_breaks', 'time_start', 'time_end', 'group_break_id'];
+
+    public static $connected_models = [
+        'group_breaks'=>GroupBreak::class
+    ];
 
     public static function nameTable(){
         return 'duration_breaks';

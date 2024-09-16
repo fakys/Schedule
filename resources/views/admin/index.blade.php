@@ -3,7 +3,7 @@
 @section('content')
     <div class="admin-index-page row">
         <div class="col index-col d-flex align-items-center">
-            <x-admin-index-block title="Преподаватели" table="{{$teachers::nameTable()}}">
+            <x-admin-index-block title="{{$teachers::ru_nameTable()}}" table="{{$teachers::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -27,7 +27,7 @@
                     </tbody>
                 </table>
             </x-admin-index-block>
-            <x-admin-index-block title="Предметы" table="{{$lessons::nameTable()}}">
+            <x-admin-index-block title="{{$lessons::ru_nameTable()}}" table="{{$lessons::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -54,7 +54,7 @@
                 </table>
             </x-admin-index-block>
 
-            <x-admin-index-block title="Форматы предметов" table="{{$lesson_formats::nameTable()}}">
+            <x-admin-index-block title="{{$lesson_formats::ru_nameTable()}}" table="{{$lesson_formats::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -80,10 +80,35 @@
                     </tbody>
                 </table>
             </x-admin-index-block>
+            <x-admin-index-block title="{{$schedule::ru_nameTable()}}" table="{{$schedule::nameTable()}}">
+                <table class="table admin-mini-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Дата начала</th>
+                        <th scope="col">Название пары</th>
+                        <th scope="col">Группа</th>
+                        <th scope="col">Просмотреть</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($schedule::all() as $val)
+                        <tr>
+                            <th scope="row">{{$val->id}}</th>
+                            <td>{{Str::limit($val->date_start, 15)}}</td>
+                            <td>{{Str::limit($val->lesson->one()->name, 15)}}</td>
+                            <td>{{Str::limit($val->student_group->one()->name, 15)}}</td>
+                            <td><a href="#" class="btn btn-success p-0 pl-1 pr-1 text-nowrap"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </x-admin-index-block>
+
         </div>
 
         <div class="col index-col d-flex align-items-center">
-            <x-admin-index-block title="Специальности" table="{{$specialities::nameTable()}}">
+            <x-admin-index-block title="{{$specialities::ru_nameTable()}}" table="{{$specialities::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -106,7 +131,7 @@
                 </table>
             </x-admin-index-block>
 
-            <x-admin-index-block title="Группы" table="{{$student_groups::nameTable()}}">
+            <x-admin-index-block title="{{$student_groups::ru_nameTable()}}" table="{{$student_groups::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -130,7 +155,7 @@
                     </tbody>
                 </table>
             </x-admin-index-block>
-            <x-admin-index-block title="Перерывы" table="{{$duration_breaks::nameTable()}}">
+            <x-admin-index-block title="{{$duration_breaks::ru_nameTable()}}" table="{{$duration_breaks::nameTable()}}">
                 <table class="table admin-mini-table">
                     <thead>
                     <tr>
@@ -155,6 +180,32 @@
                                 <td>{{Str::limit($break->duration_minutes, 15)}}</td>
                             @else
                                 <td><div class="null">Null</div></td>
+                            @endif
+                            <td><a href="#" class="btn btn-success p-0 pl-1 pr-1 text-nowrap"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </x-admin-index-block>
+            <x-admin-index-block title="{{$group_breaks::ru_nameTable()}}" table="{{$group_breaks::nameTable()}}">
+                <table class="table admin-mini-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Описание</th>
+                        <th scope="col">Просмотреть</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($group_breaks::all() as $group)
+                        <tr>
+                            <th scope="row">{{$group->id}}</th>
+                            <td>{{Str::limit($group->name, 15)}}</td>
+                            @if($group->description)
+                            <td>{{Str::limit($group->description, 15)}}</td>
+                            @else
+                                <td><div>Null</div></td>
                             @endif
                             <td><a href="#" class="btn btn-success p-0 pl-1 pr-1 text-nowrap"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</a></td>
                         </tr>

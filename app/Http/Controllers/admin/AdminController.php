@@ -4,8 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\DurationBreak;
+use App\Models\GroupBreak;
 use App\Models\Lesson;
 use App\Models\LessonFormat;
+use App\Models\Schedule;
 use App\Models\Speciality;
 use App\Models\StudentGroup;
 use App\Models\Teacher;
@@ -29,7 +31,9 @@ class AdminController extends Controller
         $lessons = Lesson::class;
         $lesson_formats= LessonFormat::class;
         $duration_breaks = DurationBreak::class;
-        return view('admin.index', compact( 'teachers', 'student_groups', 'specialities', 'lessons', 'lesson_formats', 'duration_breaks'));
+        $schedule = Schedule::class;
+        $group_breaks = GroupBreak::class;
+        return view('admin.index', compact( 'teachers', 'student_groups', 'specialities', 'lessons', 'lesson_formats', 'duration_breaks', 'schedule', 'group_breaks'));
     }
     public function show_model($table, Request $request)
     {

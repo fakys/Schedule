@@ -34,6 +34,17 @@
             @endif
         </div>
         <div class="form-group">
+            <label>Группа</label>
+            <select type="time" class="form-control @if($errors->has('time_start')) {{'is-invalid'}} @endif" name="group_break_id">
+                @foreach($model::$connected_models['group_breaks']::all() as $val)
+                    <option value="{{$val->id}}">{{$val->name}}</option>
+                @endforeach
+            </select>
+            @if($errors->has('time_start'))
+                <div class="error">{{$errors->first('time_start')}}</div>
+            @endif
+        </div>
+        <div class="form-group">
             <label>Время начала <i class="required-label">*</i></label>
             <input type="time" class="form-control @if($errors->has('time_start')) {{'is-invalid'}} @endif" name="time_start" value="{{ old('time_start') }}" placeholder="Введите время начала">
             @if($errors->has('time_start'))
