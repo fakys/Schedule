@@ -37,7 +37,7 @@ class GroupBreak extends Model
             'description'=>['string','between:20,1000']
         ];
     }
-    public function getMainFields(){
+    public static function getMainFields(){
         return [
             'id',
             'name',

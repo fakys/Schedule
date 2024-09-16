@@ -85,4 +85,17 @@ class AdminController extends Controller
             abort(404);
         }
     }
+
+    public function delete_model($table)
+    {
+        $model = $this->getTableByName($table);
+        if($model){
+            $arr_id = request()->input('deleted');
+            foreach ($arr_id as $id){
+                $model::find($id)->delete();
+            }
+            return true;
+        }
+        return false;
+    }
 }

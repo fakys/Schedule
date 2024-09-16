@@ -42,13 +42,19 @@
     background: rgba(245, 245, 245, 0.1);
     border-bottom: 1px solid var(--b-collor);
 }
-.admin-index-block-head{
+.admin-index-block-head, .admin-delete-panel-head{
     display: flex;
     background: var(--m-collor-b);
     color: white;
     padding: 5px 10px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+}
+.admin-delete-panel-head{
+    gap: 30px;
+}
+.admin-mini-table{
+    box-shadow: 0px 9px 8px 0px rgba(34, 60, 80, 0.2);
 }
 .admin-index-page{
     display: flex;
@@ -58,7 +64,7 @@
     justify-content: space-around;
     gap: 20px;
 }
-.admin-index-block{
+.admin-index-block .admin-delete-panel{
     width: 45%;
     transition-duration: 0.5s;
     box-shadow: 0px 9px 8px 0px rgba(34, 60, 80, 0.2);
@@ -75,7 +81,7 @@
 .collapse-admin-index-block{
     align-items: start;
 }
-.admin-index-block-body{
+.admin-index-block-body, .admin-delete-panel-body{
     height: 300px;
     background: white;
     border-bottom-right-radius: 10px;
@@ -193,6 +199,17 @@
 .check-all-show-model{
     text-align: center;
 }
+.check-all-delete-panel label, .check-all-delete-panel input{
+    margin: 0px;
+    cursor: pointer;
+}
+.check-all-delete-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
 .form-head{
     background: var(--m-collor-b);
     color: white;
@@ -239,6 +256,9 @@
     width: 380px;
     height: 280px;
     transition-duration: 0.3s;
+}
+.delete-objects{
+    display: none;
 }
 .admin-drop-zone i{
     font-size: 150px;
@@ -288,3 +308,42 @@
     font-size: 25px;
     display: none;
 }
+.delete-menu-container{
+    position: absolute;
+    background: rgba(133, 133, 133, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    display: none;
+}
+.delete-menu-container-active{
+    display: flex;
+}
+.delete-menu-head{
+    background: var(--m-collor-r);
+    color: white;
+    font-size: 25px;
+    padding: 5px;
+    padding-top:10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.delete-menu-body{
+    background: white;
+    padding: 10px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.reliability-delete-container label, .reliability-delete-container input{
+    cursor: pointer;
+    user-select: none;
+}
+

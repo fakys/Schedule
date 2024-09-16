@@ -7,7 +7,7 @@
             <div class="d-flex gap-2">
                 <a href="{{route('admin.create_model', ['table'=>$model::nameTable()])}}" class="btn-main-b"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</a>
                 <a href="#" class="btn btn-success btn-show-model d-none"><i class="fa fa-paint-brush" aria-hidden="true"></i> Редактировать</a>
-                <a href="#" class="btn btn-danger btn-show-model d-none"><i class="fa fa-ban" aria-hidden="true"></i> Удалить</a>
+                <div class="btn btn-danger btn-show-model btn-show-model-delete d-none"><i class="fa fa-ban" aria-hidden="true"></i> Удалить</div>
             </div>
             <div class="form ml-auto search-form input-group">
                 @if($search)
@@ -38,7 +38,11 @@
                 <tbody>
                 @foreach($data as $val)
                     <tr class="row-object">
-                        <td><div class="d-flex justify-content-center"><input type="checkbox" class="checkbox-show-model"></div></td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <input type="checkbox" class="checkbox-show-model" data-id="{{$val->id}}">
+                            </div>
+                        </td>
                         @foreach($columns as $col)
                             @if($val->$col)
                                 @if(in_array($col, $val->getMainFields()))
@@ -73,5 +77,5 @@
             </ul>
         </div>
     </div>
-
+    <x-delete-component model="{{$model}}"></x-delete-component>
 @endsection

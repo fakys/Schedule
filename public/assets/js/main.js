@@ -37,21 +37,13 @@ $(document).ready(function () {
             end_checked()
         }
     })
-
-    function checked() {
-        for (let i of $('.btn-show-model')) {
-            i.classList.remove('d-none')
-        }
-    }
-
-    function has_checked() {
-        let checked = false;
+    function has_checked(){
         for (let i of $('.checkbox-show-model')) {
-            if (i.checked) {
-                checked = true
+            if(i.checked){
+                return true;
             }
         }
-        return checked;
+        return false;
     }
 
     function end_checked() {
@@ -62,6 +54,68 @@ $(document).ready(function () {
             $('#check_all_show_model').prop('checked', false)
         }
     }
+
+    function checked() {
+        if($('.checkbox-show-model').length){
+            for (let i of $('.btn-show-model')) {
+                i.classList.remove('d-none')
+            }
+        }
+    }
+
+    $('.close-delete-panel').on('click', function (){
+        $('.delete-menu-container').removeClass('delete-menu-container-active')
+    })
+    function open_delete_panel(data){
+        $('.delete-menu-container').addClass('delete-menu-container-active')
+        for (let i of data){
+            $('.delete-object-'+i).addClass('d-table-row')
+        }
+    }
+
+    $('#input_check_all_delete_pane').change(function (){
+        if($(this).prop('checked')){
+            for (let i of $('.check-row-delete-panel')){
+                i.checked = true
+            }
+        }else {
+            for (let i of $('.check-row-delete-panel')){
+                i.checked = false
+            }
+        }
+    })
+    $('#reliability-delete').change(function (){
+        if($(this).prop('checked')){
+            $('.delete-btn-component').removeClass('d-none')
+        }else {
+            $('.delete-btn-component').addClass('d-none')
+        }
+    })
+    $('.close-delete-panel').click(function (){
+
+    })
+
+    function on_null_show_table(){
+        if($('.row-object').length == 0){
+            $('.null-show-table').addClass('d-block')
+        }
+    }
+    $('.btn-show-model-delete').on('click', function (){
+        let checkbox = $('.checkbox-show-model');
+        let data = [];
+        let csrf =$('meta[name="csrf"]').attr('content');
+        data ={'deleted':[]};
+        let url = $(this).data('action')
+        if(checkbox.length) {
+            for (let i of checkbox) {
+                if (i.checked) {
+                    data['deleted'].push($(i).data('id'))
+                }
+            }
+            open_delete_panel(data['deleted'])
+        }
+    })
+
 
     $('.checkbox-show-model').change(function () {
         if ($(this).prop('checked')) {
