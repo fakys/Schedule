@@ -20,6 +20,7 @@ return new class extends Migration
         Schema::create('student_groups', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->integer('year');
             $table->string('full_name');
             $table->foreignIdFor(\App\Models\Speciality::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();

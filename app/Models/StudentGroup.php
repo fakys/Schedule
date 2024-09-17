@@ -15,9 +15,10 @@ class StudentGroup extends Model
 
     protected $table='student_groups';
 
-    protected $fillable = ['name', 'full_name', 'speciality_id'];
+    protected $fillable = ['name', 'full_name', 'speciality_id', 'year'];
     protected static $ru_fields = [
         'name'=>'Название',
+        'year'=>'Курс',
         'full_name'=>'Полное название',
         'speciality_id'=>'Специальность',
         'created_at'=>'Время создания',
@@ -38,13 +39,14 @@ class StudentGroup extends Model
 
     public function speciality()
     {
-        return $this->belongsTo(Speciality::class, 'id');
+        return $this->belongsTo(Speciality::class, 'speciality_id', 'id');
     }
 
     public static function getMainFields()
     {
         return [
             'name',
+            'year',
             'full_name'
         ];
     }
@@ -52,7 +54,8 @@ class StudentGroup extends Model
     {
         return [
             'name'=>['required', 'string', 'between:2,10', 'unique:student_groups,name'],
-            'full_name'=>['required', 'string', 'between:5,50', 'unique:student_groups,full_name'],
+            'year'=>['required', 'integer', 'between:0,5'],
+            'full_name'=>['required', 'string', 'between:5,50'],
             'speciality_id'=>['required', 'integer']
         ];
     }

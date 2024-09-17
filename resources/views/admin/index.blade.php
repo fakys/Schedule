@@ -145,6 +145,7 @@
                     <tbody>
                     @foreach($student_groups::all() as $group)
                         <tr>
+
                             <th scope="row">{{$group->id}}</th>
                             <td>{{Str::limit($group->name, 15)}}</td>
                             <td>{{Str::limit($group->full_name, 15)}}</td>

@@ -62,11 +62,28 @@ $(document).ready(function () {
         }
     }
 
+    function count_checked(){
+        let count = 0;
+        if (has_checked()) {
+            for (let i of $('.checkbox-show-model')) {
+                if(i.checked){
+                    count+=1;
+                }
+            }
+        }
+        return count;
+    }
+
     function checked() {
-        if($('.checkbox-show-model').length){
+        console.log(count_checked())
+        if(count_checked() === 1){
+
             for (let i of $('.btn-show-model')) {
                 i.classList.remove('d-none')
             }
+        }else if(count_checked() > 1){
+            $('.btn-show-model-edit').addClass('d-none')
+            $('.btn-show-model-delete').removeClass('d-none')
         }
     }
 

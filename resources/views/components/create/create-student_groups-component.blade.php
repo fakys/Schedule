@@ -14,6 +14,13 @@
                 @endif
             </div>
             <div class="form-group">
+                <label>Курс <i class="required-label">*</i></label>
+                <input type="number" class="form-control @if($errors->has('year')) {{'is-invalid'}} @endif" name="year" value="{{ old('year') }}" placeholder="Введите курс">
+                @if($errors->has('year'))
+                    <div class="error">{{$errors->first('year')}}</div>
+                @endif
+            </div>
+            <div class="form-group">
                 <label>Полное название <i class="required-label">*</i></label>
                 <input type="text" class="form-control @if($errors->has('full_name')) {{'is-invalid'}} @endif" name="full_name" value="{{ old('full_name') }}" placeholder="Введите полное название">
                 @if($errors->has('full_name'))

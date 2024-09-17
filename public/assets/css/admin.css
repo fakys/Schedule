@@ -42,6 +42,10 @@
     background: rgba(245, 245, 245, 0.1);
     border-bottom: 1px solid var(--b-collor);
 }
+.admin-index-block{
+    width: 500px;
+    box-shadow: 0px 9px 8px 0px rgba(34, 60, 80, 0.2);
+}
 .admin-index-block-head, .admin-delete-panel-head{
     display: flex;
     background: var(--m-collor-b);
@@ -52,9 +56,6 @@
 }
 .admin-delete-panel-head{
     gap: 30px;
-}
-.admin-mini-table{
-    box-shadow: 0px 9px 8px 0px rgba(34, 60, 80, 0.2);
 }
 .admin-index-page{
     display: flex;

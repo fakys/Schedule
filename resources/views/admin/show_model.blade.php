@@ -6,7 +6,7 @@
         <form method="get" action="{{route('admin.show_model', ['table'=>$model::nameTable()])}}" class="d-flex mb-2">
             <div class="d-flex gap-2">
                 <a href="{{route('admin.create_model', ['table'=>$model::nameTable()])}}" class="btn-main-b"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</a>
-                <a href="#" class="btn btn-success btn-show-model d-none"><i class="fa fa-paint-brush" aria-hidden="true"></i> Редактировать</a>
+                <a href="#" class="btn btn-success btn-show-model btn-show-model-edit d-none"><i class="fa fa-paint-brush" aria-hidden="true"></i> Редактировать</a>
                 <div class="btn btn-danger btn-show-model btn-show-model-delete d-none"><i class="fa fa-ban" aria-hidden="true"></i> Удалить</div>
             </div>
             <div class="form ml-auto search-form input-group">
