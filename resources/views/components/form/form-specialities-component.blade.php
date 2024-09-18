@@ -7,14 +7,14 @@
     <div class="form-body">
         <div class="form-group">
             <label>{{$model::get_ru_field('name')}} <i class="required-label">*</i></label>
-            <input type="text" class="form-control @if($errors->has('name')) {{'is-invalid'}} @endif" name="name" value="{{ old('name') }}" placeholder="Введите название">
+            <input type="text" class="form-control @if($errors->has('name')) {{'is-invalid'}} @endif" name="name" value="{{ old('name') }}" placeholder="Заполните поле '{{$model::get_ru_field('name')}}'">
             @if($errors->has('name'))
                 <div class="error">{{$errors->first('name')}}</div>
             @endif
         </div>
         <div class="form-group">
             <label>{{$model::get_ru_field('number')}} <i class="required-label">*</i></label>
-            <input type="number" class="form-control @if($errors->has('number')) {{'is-invalid'}} @endif" name="number" value="{{ old('number') }}" placeholder="Введите номер">
+            <input type="number" class="form-control @if($errors->has('number')) {{'is-invalid'}} @endif" name="number" value="{{ old('number') }}" placeholder="Заполните поле '{{$model::get_ru_field('number')}}'">
             @if($errors->has('number'))
                 <div class="error">{{$errors->first('number')}}</div>
             @endif

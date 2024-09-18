@@ -7,35 +7,35 @@
         <div class="form-body">
             <div class="form-group">
                 <label>{{$model::get_ru_field('name')}} <i class="required-label">*</i></label>
-                <input type="text" class="form-control @if($errors->has('name')) {{'is-invalid'}} @endif" name="name" value="{{ old('name') }}" placeholder="Введите имя">
+                <input type="text" class="form-control @if($errors->has('name')) {{'is-invalid'}} @endif" name="name" value="{{ old('name') }}" placeholder="Заполните поле '{{$model::get_ru_field('name')}}'">
                 @if($errors->has('name'))
                     <div class="error">{{$errors->first('name')}}</div>
                 @endif
             </div>
             <div class="form-group">
                 <label>{{$model::get_ru_field('surname')}} <i class="required-label">*</i></label>
-                <input type="text" class="form-control @if($errors->has('surname')) {{'is-invalid'}} @endif" name="surname" value="{{ old('surname') }}" placeholder="Введите фамилию">
+                <input type="text" class="form-control @if($errors->has('surname')) {{'is-invalid'}} @endif" name="surname" value="{{ old('surname') }}" placeholder="Заполните поле '{{$model::get_ru_field('surname')}}'">
                 @if($errors->has('surname'))
                     <div class="error">{{$errors->first('surname')}}</div>
                 @endif
             </div>
             <div class="form-group">
                 <label>{{$model::get_ru_field('patronymic')}}</label>
-                <input type="text" class="form-control @if($errors->has('patronymic')) {{'is-invalid'}} @endif" name="patronymic" value="{{ old('patronymic') }}" placeholder="Введите отчество">
+                <input type="text" class="form-control @if($errors->has('patronymic')) {{'is-invalid'}} @endif" name="patronymic" value="{{ old('patronymic') }}" placeholder="Заполните поле '{{$model::get_ru_field('patronymic')}}'">
                 @if($errors->has('patronymic'))
                     <div class="error">{{$errors->first('patronymic')}}</div>
                 @endif
             </div>
             <div class="form-group">
                 <label>{{$model::get_ru_field('email')}} <i class="required-label">*</i></label>
-                <input type="email" class="form-control @if($errors->has('email')) {{'is-invalid'}} @endif" name='email' value="{{ old('email') }}" placeholder="Введите email">
+                <input type="email" class="form-control @if($errors->has('email')) {{'is-invalid'}} @endif" name='email' value="{{ old('email') }}" placeholder="Заполните поле '{{$model::get_ru_field('email')}}'">
                 @if($errors->has('email'))
                     <div class="error">{{$errors->first('email')}}</div>
                 @endif
             </div>
             <div class="form-group">
                 <label>{{$model::get_ru_field('number')}}</label>
-                <input type="number" class="form-control @if($errors->has('number')) {{'is-invalid'}} @endif" name="number" value="{{ old('number') }}" placeholder="Введите номер телефона">
+                <input type="number" class="form-control @if($errors->has('number')) {{'is-invalid'}} @endif" name="number" value="{{ old('number') }}" placeholder="Заполните поле '{{$model::get_ru_field('number')}}'">
                 @if($errors->has('number'))
                     <div class="error">{{$errors->first('number')}}</div>
                 @endif
