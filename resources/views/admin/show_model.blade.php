@@ -49,7 +49,9 @@
                                     <td><a href="#">{{\Illuminate\Support\Str::limit($val->$col, 50)}}</a></td>
                                 @elseif($val->image_fields && in_array($col, $val->image_fields))
                                     <td>
-                                        <img src="{{asset($val->$col)}}" class="image-show-model"/>
+                                        <div class="img-container-show-model">
+                                            <img src="{{asset($val->$col)}}" class="image-show-model"/>
+                                        </div>
                                     </td>
                                 @else
                                     <td>{{\Illuminate\Support\Str::limit($val->$col, 50)}}</td>

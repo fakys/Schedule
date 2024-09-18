@@ -1,13 +1,12 @@
 <?php
 namespace App\Models;
 
-use App\Rules\After;
-use App\Traits\ObjectModel;
+use App\Traits\HelperModel;
 use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-    use ObjectModel;
+    use HelperModel;
 
     public static $technical_fields = [];
 

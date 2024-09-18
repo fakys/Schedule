@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Traits\ObjectModel;
+use App\Traits\HelperModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class GroupBreak extends Model
 {
     use HasFactory;
-    use ObjectModel;
+    use HelperModel;
 
     protected $fillable=['name', 'description'];
     public static array $technical_fields = [];

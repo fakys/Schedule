@@ -1,7 +1,9 @@
 <?php
 namespace App\Traits;
 
-trait ObjectModel
+use Illuminate\Support\Facades\Storage;
+
+trait HelperModel
 {
     private $data_technical_fields=[];
     public static function object($data =[])
@@ -45,4 +47,26 @@ trait ObjectModel
         return $field;
     }
 
+
+    protected static function save_image($image, $push, $driver='public'):string
+    {
+        if($image){
+            return "storage/{$image->store($push, $driver)}";
+        }
+        return "assets/img/user/start_user_ava.jpg";
+    }
+    protected static function delete_image($image)
+    {
+        if($image){
+            $file_push = str_replace('storage/','', $image);
+            if(Storage::disk('public')->exists($file_push)){
+                return Storage::disk('public')->delete($file_push);
+            }
+        }
+        return false;
+    }
+    protected function update_image($image, $push, $driver='public')
+    {
+
+    }
 }
