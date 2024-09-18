@@ -21,7 +21,7 @@ class LessonDuration extends Model
         'updated_at'=>'Время обновления'
     ];
 
-    protected $table = 'duration_lessons';
+    protected $table = 'lesson_durations';
 
     public static function nameTable(){
         return 'duration_lessons';

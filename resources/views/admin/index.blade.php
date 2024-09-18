@@ -96,8 +96,8 @@
                         <tr>
                             <th scope="row">{{$val->id}}</th>
                             <td>{{Str::limit($val->date_start, 15)}}</td>
-                            <td>{{Str::limit($val->lesson->one()->name, 15)}}</td>
-                            <td>{{Str::limit($val->student_group->one()->name, 15)}}</td>
+                            <td>{{Str::limit($val->lesson->name, 15)}}</td>
+                            <td>{{Str::limit($val->student_group->name, 15)}}</td>
                             <td><a href="#" class="btn btn-success p-0 pl-1 pr-1 text-nowrap"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</a></td>
                         </tr>
                     @endforeach
