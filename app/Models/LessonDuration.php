@@ -25,7 +25,7 @@ class LessonDuration extends Model
     protected $table = 'lesson_durations';
 
     public static function nameTable(){
-        return 'duration_lessons';
+        return 'lesson_durations';
     }
     public static function ru_nameTable(){
         return 'Длитеотность пар';
