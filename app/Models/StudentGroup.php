@@ -26,6 +26,10 @@ class StudentGroup extends Model implements ModelInterface
         'updated_at'=>'Время обновления'
     ];
 
+    public $connected_fields=[
+        'speciality_id'=>['method'=>'speciality', 'field'=>'name']
+    ];
+
     public static $connected_models = [
         'specialities'=>Speciality::class
     ];

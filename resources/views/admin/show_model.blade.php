@@ -53,6 +53,12 @@
                                             <img src="{{asset($val->$col)}}" class="image-show-model"/>
                                         </div>
                                     </td>
+                                @elseif($val->connected_fields && isset($val->connected_fields[$col]))
+                                <td>
+                                    <a href="#">
+                                        {{\Illuminate\Support\Str::limit($val->{$val->connected_fields[$col]['method']}->{$val->connected_fields[$col]['field']}, 50)}}
+                                    </a>
+                                </td>
                                 @else
                                     <td>{{\Illuminate\Support\Str::limit($val->$col, 50)}}</td>
                                 @endif

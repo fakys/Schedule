@@ -34,6 +34,14 @@ class Schedule extends Model implements ModelInterface
         'created_at'=>'Время создания',
         'updated_at'=>'Время обновления'
     ];
+    public $connected_fields = [
+        'student_group_id'=>['method'=>'student_group', 'field'=>'name'],
+        'lesson_id'=>['method'=>'lesson', 'field'=>'name'],
+        'teacher_id'=>['method'=>'teacher', 'field'=>'surname'],
+        'lesson_duration_id'=>['method'=>'lesson_duration', 'field'=>'name'],
+        'lesson_format_id'=>['method'=>'lesson_format', 'field'=>'name'],
+    ];
+
     public static function nameTable(): string
     {
         return 'schedules';
@@ -71,5 +79,17 @@ class Schedule extends Model implements ModelInterface
     public function student_group()
     {
         return $this->hasOne(StudentGroup::class, 'id','student_group_id');
+    }
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class, 'id','teacher_id');
+    }
+    public function lesson_duration()
+    {
+        return $this->hasOne(LessonDuration::class, 'id','lesson_duration_id');
+    }
+    public function lesson_format()
+    {
+        return $this->hasOne(LessonFormat::class, 'id','lesson_format_id');
     }
 }

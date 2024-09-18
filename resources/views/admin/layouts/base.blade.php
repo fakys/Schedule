@@ -216,7 +216,15 @@
                   </a>
               </li>
               <li class="nav-admin-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{route('admin.show_model', ['table'=>\App\Models\Teacher::nameTable()])}}" class="nav-link">
+                      <i class="fa fa-briefcase nav-icon" aria-hidden="true"></i>
+                      <p class="nav-link-text">
+                          Преподователи
+                      </p>
+                  </a>
+              </li>
+              <li class="nav-admin-item">
+                  <a href="{{route('admin.show_model', ['table'=>\App\Models\Lesson::nameTable()])}}" class="nav-link">
                       <i class="fa fa-hourglass-end nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Пары
@@ -225,7 +233,7 @@
               </li>
               <li class="nav-header">Админ панель</li>
               <li class="nav-admin-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{route('admin.show_model', ['table'=>\App\Models\User::nameTable()])}}" class="nav-link">
                       <i class="fa fa-user nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Пользователи
@@ -233,7 +241,7 @@
                   </a>
               </li>
               <li class="nav-admin-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{route('admin.show_model', ['table'=>\App\Models\UserGroup::nameTable()])}}" class="nav-link">
                       <i class="fa fa-address-book nav-fa-icon nav-icon" aria-hidden="true"></i>
                       <p class="nav-link-text">
                           Группы ползователей
