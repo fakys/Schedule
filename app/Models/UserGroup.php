@@ -36,4 +36,11 @@ class UserGroup extends Model
     {
         return 'Группы пользователей';
     }
+
+    public static function rules()
+    {
+        return [
+            'name'=>['required', 'string', 'unique:user_groups,name']
+        ];
+    }
 }

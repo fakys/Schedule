@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\ObjectModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Teacher extends Model
 {
@@ -68,6 +69,15 @@ class Teacher extends Model
             'number'=>['string', 'between:11, 11'],
         ];
     }
+    private static function delete_ava($model)
+    {
+        if($model->avatar){
+            $file_push = str_replace('storage/','', $model->avatar);
+            if(Storage::disk('public')->exists($file_push)){
+                return Storage::disk('public')->delete($file_push);
+            }
+        }
+    }
 
     public static function boot()
     {
@@ -76,14 +86,11 @@ class Teacher extends Model
         self::creating(function ($model){
             self::save_avatar($model);
         });
+        self::deleting(function ($model){
+            self::delete_ava($model);
+        });
     }
 
-    public function loadFiles($files)
-    {
-        foreach ($files as $key=>$val){
-            $this->$key = $val;
-        }
-    }
     private static function save_avatar($model)
     {
         if($model->avatar){

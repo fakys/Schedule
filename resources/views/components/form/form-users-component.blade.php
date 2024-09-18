@@ -7,7 +7,7 @@
         <div class="form-body">
             <div class="form-group">
                 <label>{{$model::get_ru_field('login')}} <i class="required-label">*</i></label>
-                <input type="text" class="form-control @if($errors->has('login')) {{'is-invalid'}} @endif" name="number" value="{{ old('login') }}" placeholder="Заполните поле '{{$model::get_ru_field('login')}}'">
+                <input type="text" class="form-control @if($errors->has('login')) {{'is-invalid'}} @endif" name="login" value="{{ old('login') }}" placeholder="Заполните поле '{{$model::get_ru_field('login')}}'">
                 @if($errors->has('login'))
                     <div class="error">{{$errors->first('login')}}</div>
                 @endif
@@ -69,6 +69,7 @@
                 </div>
             </div>
             <div class="form-group">
+                <label>{{$model::get_ru_field('user_group_id')}}</label>
                 <select class="form-control @if($errors->has('user_group_id')) {{'is-invalid'}} @endif" name="user_group_id">
                     @if(old('user_group_id'))
                         <option value="">Не выбрано</option>
@@ -92,14 +93,14 @@
             </div>
             <div class="form-group">
                 <label>{{$model::get_ru_field('password')}} <i class="required-label">*</i></label>
-                <input type="password" name="password" value="{{old('password')}}" class="form-control @if($errors->has('password')) {{'is-invalid'}} @endif" placeholder="Заполните поле '{{$model::get_ru_field('password')}}'">
+                <input type="password" name="password" class="form-control @if($errors->has('password')) {{'is-invalid'}} @endif" placeholder="Заполните поле '{{$model::get_ru_field('password')}}'">
                 @if($errors->has('password'))
                     <div class="error">{{$errors->first('password')}}</div>
                 @endif
             </div>
             <div class="form-group">
                 <label>{{$model::get_ru_field('password_confirm')}} <i class="required-label">*</i></label>
-                <input type="password" name="password_confirm" value="{{old('password_confirm')}}" class="form-control @if($errors->has('password_confirm')) {{'is-invalid'}} @endif" placeholder="Заполните поле '{{$model::get_ru_field('password_confirm')}}'">
+                <input type="password" name="password_confirm" class="form-control @if($errors->has('password_confirm')) {{'is-invalid'}} @endif" placeholder="Заполните поле '{{$model::get_ru_field('password_confirm')}}'">
                 @if($errors->has('password_confirm'))
                     <div class="error">{{$errors->first('password_confirm')}}</div>
                 @endif

@@ -22,6 +22,14 @@ trait ObjectModel
             }
         }
     }
+
+    public function loadFiles($files)
+    {
+        foreach ($files as $key=>$val){
+            $this->$key = $val;
+        }
+    }
+
     public function get_technical_fields($field)
     {
         if(isset($this->data_technical_fields[$field])){
