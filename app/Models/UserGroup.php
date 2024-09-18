@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Interface\ModelInterface;
 use App\Traits\HelperModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserGroup extends Model
+class UserGroup extends Model implements ModelInterface
 {
     use HasFactory;
     use HelperModel;
@@ -16,7 +17,8 @@ class UserGroup extends Model
 
     protected $table= 'user_groups';
 
-    public static function nameTable(){
+    public static function nameTable(): string
+    {
         return 'user_groups';
     }
 
@@ -25,19 +27,20 @@ class UserGroup extends Model
         'created_at'=>'Время создания',
         'updated_at'=>'Время обновления'
     ];
-    public static function getMainFields(){
+    public static function getMainFields(): array
+    {
         return [
             'name',
             'created_at',
             'updated_at'
         ];
     }
-    public static function ru_nameTable()
+    public static function ru_nameTable(): string
     {
         return 'Группы пользователей';
     }
 
-    public static function rules()
+    public static function rules(): array
     {
         return [
             'name'=>['required', 'string', 'unique:user_groups,name']

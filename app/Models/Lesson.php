@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Interface\ModelInterface;
 use App\Traits\HelperModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lesson extends Model
+class Lesson extends Model implements ModelInterface
 {
     use HasFactory;
     use HelperModel;
@@ -30,15 +31,16 @@ class Lesson extends Model
     ];
 
 
-    public static function nameTable(){
+    public static function nameTable(): string
+    {
         return 'lessons';
     }
-    public static function ru_nameTable()
+    public static function ru_nameTable(): string
     {
         return "Предметы";
     }
 
-    public static function getMainFields()
+    public static function getMainFields(): array
     {
         return [
             'name',
@@ -46,7 +48,7 @@ class Lesson extends Model
         ];
     }
 
-    public static function rules()
+    public static function rules(): array
     {
         return [
             'name'=>['required', 'string', 'unique:lessons,name', 'between:3,40'],

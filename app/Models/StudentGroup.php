@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Interface\ModelInterface;
 use App\Traits\HelperModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StudentGroup extends Model
+class StudentGroup extends Model implements ModelInterface
 {
     use HasFactory;
     use HelperModel;
@@ -29,10 +30,11 @@ class StudentGroup extends Model
         'specialities'=>Speciality::class
     ];
 
-    public static function nameTable(){
+    public static function nameTable(): string
+    {
         return 'student_groups';
     }
-    public static function ru_nameTable()
+    public static function ru_nameTable(): string
     {
         return 'Группы';
     }
@@ -42,7 +44,7 @@ class StudentGroup extends Model
         return $this->belongsTo(Speciality::class, 'speciality_id', 'id');
     }
 
-    public static function getMainFields()
+    public static function getMainFields(): array
     {
         return [
             'name',
@@ -50,7 +52,7 @@ class StudentGroup extends Model
             'full_name'
         ];
     }
-    public static function rules()
+    public static function rules(): array
     {
         return [
             'name'=>['required', 'string', 'between:2,10', 'unique:student_groups,name'],

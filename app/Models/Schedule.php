@@ -1,10 +1,11 @@
 <?php
 namespace App\Models;
 
+use App\Interface\ModelInterface;
 use App\Traits\HelperModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Schedule extends Model
+class Schedule extends Model implements ModelInterface
 {
     use HelperModel;
 
@@ -33,21 +34,21 @@ class Schedule extends Model
         'created_at'=>'Время создания',
         'updated_at'=>'Время обновления'
     ];
-    public static function nameTable()
+    public static function nameTable(): string
     {
         return 'schedules';
     }
-    public static function ru_nameTable()
+    public static function ru_nameTable(): string
     {
         return 'Расписания';
     }
 
-    public static function getMainFields()
+    public static function getMainFields(): array
     {
         return ['number_pairs', 'time_start', 'time_end'];
     }
 
-    public static function rules()
+    public static function rules(): array
     {
         return [
             'number_pairs'=>['required', 'integer', 'max:6'],

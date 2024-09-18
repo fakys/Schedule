@@ -55,18 +55,22 @@ trait HelperModel
         }
         return "assets/img/user/start_user_ava.jpg";
     }
-    protected static function delete_image($image)
+    protected static function delete_image($image, $driver='public')
     {
         if($image){
             $file_push = str_replace('storage/','', $image);
-            if(Storage::disk('public')->exists($file_push)){
-                return Storage::disk('public')->delete($file_push);
+            if(Storage::disk($driver)->exists($file_push)){
+                return Storage::disk($driver)->delete($file_push);
             }
         }
         return false;
     }
-    protected function update_image($image, $push, $driver='public')
+    protected static function update_image($image, $push, $driver='public')
     {
-
+        if($image){
+            self::delete_image($image, $driver);
+            return self::save_image($image, $push, $driver);
+        }
+        return false;
     }
 }

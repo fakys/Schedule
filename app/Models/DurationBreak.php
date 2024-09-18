@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Interface\ModelInterface;
 use App\Traits\HelperModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DurationBreak extends Model
+class DurationBreak extends Model implements ModelInterface
 {
     use HasFactory;
     use HelperModel;
@@ -30,22 +31,23 @@ class DurationBreak extends Model
         'group_breaks'=>GroupBreak::class
     ];
 
-    public static function nameTable(){
+    public static function nameTable(): string
+    {
         return 'duration_breaks';
     }
-    public static function ru_nameTable()
+    public static function ru_nameTable(): string
     {
         return 'Перерывы';
     }
 
-    public static function getMainFields()
+    public static function getMainFields(): array
     {
         return [
             'name',
             'number_breaks',
         ];
     }
-    public static function rules()
+    public static function rules(): array
     {
         return  [
             'name'=>['string', 'unique:duration_breaks,name', 'between:3,40'],

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Interface\ModelInterface;
 use App\Traits\HelperModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 
-class User extends Authenticatable
+class User extends Authenticatable implements ModelInterface
 {
     use HasFactory, Notifiable;
     use HelperModel;
@@ -48,10 +49,12 @@ class User extends Authenticatable
         'avatar'
     ];
 
-    public static function nameTable(){
+    public static function nameTable(): string
+    {
         return 'users';
     }
-    public static function ru_nameTable(){
+    public static function ru_nameTable(): string
+    {
         return 'Пользователи';
     }
 
@@ -62,7 +65,8 @@ class User extends Authenticatable
         ];
     }
 
-    public static function getMainFields(){
+    public static function getMainFields(): array
+    {
         return [
             'name',
             'email'
@@ -73,14 +77,14 @@ class User extends Authenticatable
     {
         parent::boot();
         self::creating(function ($model){
-            self::save_image($model->image, 'image/users_ava');
+            $model->avatar = self::save_image($model->avatar, 'image/users_ava');
         });
         self::deleting(function ($model){
             self::delete_image($model->avatar);
         });
     }
 
-    public static function rules()
+    public static function rules(): array
     {
         return [
             'login'=>['required', 'string', 'between:3,40', 'unique:users,login'],

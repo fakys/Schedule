@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Interface\ModelInterface;
 use App\Traits\HelperModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Teacher extends Model
+class Teacher extends Model implements ModelInterface
 {
     use HasFactory;
     use HelperModel;
@@ -26,15 +27,16 @@ class Teacher extends Model
     ];
     public $table= 'teachers';
 
-    public static function nameTable(){
+    public static function nameTable(): string
+    {
         return 'teachers';
     }
-    public static function ru_nameTable()
+    public static function ru_nameTable(): string
     {
         return 'Преподователи';
     }
 
-    public static function getMainFields()
+    public static function getMainFields(): array
     {
         return [
             'name',
