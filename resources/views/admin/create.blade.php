@@ -2,5 +2,5 @@
 
 
 @section('content')
-{{\App\View\Components\CreateComponent::object(['model'=>$model])->render()}}
+{{(new \App\View\Components\CreateComponent(['model'=>$model]))->render()}}
 @endsection

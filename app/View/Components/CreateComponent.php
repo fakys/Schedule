@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use App\Traits\Objects;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\File;
@@ -10,7 +9,6 @@ use Illuminate\View\Component;
 
 class CreateComponent extends Component
 {
-    use Objects;
     public $model;
     public function __construct($data)
     {
@@ -23,6 +21,6 @@ class CreateComponent extends Component
     public function render(): View|Closure|string
     {
 
-        return view("components.create.create-{$this->model::nameTable()}-component", ['model'=>$this->model]);
+        return view("components.form.form-{$this->model::nameTable()}-component", ['model'=>$this->model]);
     }
 }

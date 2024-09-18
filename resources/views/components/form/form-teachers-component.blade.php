@@ -6,35 +6,35 @@
         @csrf
         <div class="form-body">
             <div class="form-group">
-                <label>Имя <i class="required-label">*</i></label>
+                <label>{{$model::get_ru_field('name')}} <i class="required-label">*</i></label>
                 <input type="text" class="form-control @if($errors->has('name')) {{'is-invalid'}} @endif" name="name" value="{{ old('name') }}" placeholder="Введите имя">
                 @if($errors->has('name'))
                     <div class="error">{{$errors->first('name')}}</div>
                 @endif
             </div>
             <div class="form-group">
-                <label>Фамилия <i class="required-label">*</i></label>
+                <label>{{$model::get_ru_field('surname')}} <i class="required-label">*</i></label>
                 <input type="text" class="form-control @if($errors->has('surname')) {{'is-invalid'}} @endif" name="surname" value="{{ old('surname') }}" placeholder="Введите фамилию">
                 @if($errors->has('surname'))
                     <div class="error">{{$errors->first('surname')}}</div>
                 @endif
             </div>
             <div class="form-group">
-                <label>Отчество</label>
+                <label>{{$model::get_ru_field('patronymic')}}</label>
                 <input type="text" class="form-control @if($errors->has('patronymic')) {{'is-invalid'}} @endif" name="patronymic" value="{{ old('patronymic') }}" placeholder="Введите отчество">
                 @if($errors->has('patronymic'))
                     <div class="error">{{$errors->first('patronymic')}}</div>
                 @endif
             </div>
             <div class="form-group">
-                <label>Email <i class="required-label">*</i></label>
+                <label>{{$model::get_ru_field('email')}} <i class="required-label">*</i></label>
                 <input type="email" class="form-control @if($errors->has('email')) {{'is-invalid'}} @endif" name='email' value="{{ old('email') }}" placeholder="Введите email">
                 @if($errors->has('email'))
                     <div class="error">{{$errors->first('email')}}</div>
                 @endif
             </div>
             <div class="form-group">
-                <label>Номер телефона</label>
+                <label>{{$model::get_ru_field('number')}}</label>
                 <input type="number" class="form-control @if($errors->has('number')) {{'is-invalid'}} @endif" name="number" value="{{ old('number') }}" placeholder="Введите номер телефона">
                 @if($errors->has('number'))
                     <div class="error">{{$errors->first('number')}}</div>
@@ -43,7 +43,7 @@
             <div class="admin-form-photo-block">
                 <div class="form-group d-flex gap-2">
                     <div class="admin-drop-zone-container">
-                        <label>Фотография</label>
+                        <label>{{$model::get_ru_field('avatar')}}</label>
                         <label for="admin-photo-input" class="admin-drop-zone @if($errors->has('avatar')) invalid-drop-zone @endif">
                             <div class="d-flex justify-content-center align-items-center">
                                 <img src="" class="admin-drop-zone-image">
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Дата рождения</label>
+                <label>{{$model::get_ru_field('date_birth')}}</label>
                 <input type="date" class="form-control @if($errors->has('date_birth')) {{'is-invalid'}} @endif" value="{{ old('date_birth') }}" name="date_birth">
                 @if($errors->has('date_birth'))
                     <div class="error">{{$errors->first('date_birth')}}</div>

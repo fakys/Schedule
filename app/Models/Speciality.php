@@ -34,7 +34,8 @@ class Speciality extends Model
     public static function getMainFields()
     {
         return [
-            'name'
+            'name',
+            'number'
         ];
     }
     public static function ru_nameTable()
