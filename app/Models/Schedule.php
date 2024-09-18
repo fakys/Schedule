@@ -45,7 +45,7 @@ class Schedule extends Model
 
     public static function getMainFields()
     {
-        return ['time_start', 'time_end', 'number_pairs'];
+        return ['number_pairs', 'time_start', 'time_end'];
     }
 
     public static function rules()

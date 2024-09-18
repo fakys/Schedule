@@ -39,7 +39,6 @@ class GroupBreak extends Model
     }
     public static function getMainFields(){
         return [
-            'id',
             'name',
             'description'
         ];

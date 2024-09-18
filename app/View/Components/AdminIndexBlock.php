@@ -8,12 +8,10 @@ use Illuminate\Contracts\View\View;
 
 class AdminIndexBlock extends Component
 {
-    public $title = '';
-    public $table = '';
-    public function __construct($title, $table)
+    public $model;
+    public function __construct($model)
     {
-        $this->title = $title;
-        $this->table = $table;
+        $this->model= $model;
     }
 
     /**
@@ -21,6 +19,6 @@ class AdminIndexBlock extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin-index-block', ['title'=>$this->title, 'name_table'=>$this->table]);
+        return view('components.admin-index-block', ['model'=>$this->model]);
     }
 }

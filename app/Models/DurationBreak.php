@@ -43,8 +43,6 @@ class DurationBreak extends Model
         return [
             'name',
             'number_breaks',
-            'time_start',
-            'time_end'
         ];
     }
     public static function rules()

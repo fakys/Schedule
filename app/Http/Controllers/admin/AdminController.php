@@ -25,15 +25,8 @@ class AdminController extends Controller
     use AdminHelper;
     public function index()
     {
-        $teachers = Teacher::class;
-        $student_groups = StudentGroup::class;
-        $specialities = Speciality::class;
-        $lessons = Lesson::class;
-        $lesson_formats= LessonFormat::class;
-        $duration_breaks = DurationBreak::class;
-        $schedule = Schedule::class;
-        $group_breaks = GroupBreak::class;
-        return view('admin.index', compact( 'teachers', 'student_groups', 'specialities', 'lessons', 'lesson_formats', 'duration_breaks', 'schedule', 'group_breaks'));
+        $models = array_chunk($this->data, ceil(count($this->data) / 2));
+        return view('admin.index', compact('models'));
     }
     public function show_model($table, Request $request)
     {

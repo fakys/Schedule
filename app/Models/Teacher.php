@@ -38,7 +38,6 @@ class Teacher extends Model
         return [
             'name',
             'surname',
-            'patronymic',
             'email',
         ];
     }
