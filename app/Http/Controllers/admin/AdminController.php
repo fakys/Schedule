@@ -38,10 +38,10 @@ class AdminController extends Controller
         }
         $model = $this->getTableByName($table);
         $title = "Таблица '{$this->getTableByName($table)::ru_nameTable()}'";
-        if(!$model){
-            abort(404);
-        }else{
+        if($model){
             $columns = Schema::getColumnListing($table);
+        }else{
+            abort(404);
         }
         return view('admin.show_model', compact('data', 'columns', 'model', 'title', 'search'));
     }

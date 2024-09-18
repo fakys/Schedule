@@ -12,10 +12,28 @@ class UserGroup extends Model
     use ObjectModel;
 
     public static array $technical_fields= [];
+    public $fillable = ['name'];
 
-    protected $table= 'users_groups';
+    protected $table= 'user_groups';
 
     public static function nameTable(){
-        return 'users_groups';
+        return 'user_groups';
+    }
+
+    protected static $ru_fields = [
+        'name'=>'Название',
+        'created_at'=>'Время создания',
+        'updated_at'=>'Время обновления'
+    ];
+    public static function getMainFields(){
+        return [
+            'name',
+            'created_at',
+            'updated_at'
+        ];
+    }
+    public static function ru_nameTable()
+    {
+        return 'Группы пользователей';
     }
 }

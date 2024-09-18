@@ -26,6 +26,8 @@ trait DataModel
         Speciality::class,
         StudentGroup::class,
         Teacher::class,
+        User::class,
+        UserGroup::class
     ];
 
     public function getTableByName($name)

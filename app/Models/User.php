@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Traits\ObjectModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,43 +12,58 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
     use ObjectModel;
 
-    public static array $technical_fields= [];
+    public $password_confirm;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    public static $connected_models = [
+        'user_group'=>UserGroup::class
+    ];
+
+    public static array $technical_fields= ['password_confirm'];
+
+    protected static $ru_fields = [
+        'login'=>'Логин',
+        'name'=>'Имя',
+        'surname'=>'Фамилия',
+        'patronymic'=>"Отчество",
+        'email'=>'Email',
+        'user_group_id'=>'Группа пользователей',
+        'password'=>'Пароль',
+        'password_confirm'=>'Повторите пароль',
+        'avatar'=>"Фотография",
+        'created_at'=>'Время создания',
+        'updated_at'=>'Время обновления'
+    ];
+
     protected $fillable = [
+        'login',
         'name',
+        'surname',
+        'patronymic',
         'email',
+        'user_group_id',
         'password',
+        'avatar'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
+        ];
+    }
+
+    public static function getMainFields(){
+        return [
+            'name',
+            'email'
         ];
     }
 
     public static function nameTable(){
         return 'users';
     }
+    public static function ru_nameTable(){
+        return 'Пользователи';
+    }
+
 }
