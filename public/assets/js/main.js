@@ -59,6 +59,10 @@ $(document).ready(function () {
                 i.classList.add('d-none')
             }
             $('#check_all_show_model').prop('checked', false)
+        }else {
+            if(count_checked() === 1){
+                $('.btn-show-model-edit').removeClass('d-none')
+            }
         }
     }
 
@@ -75,9 +79,7 @@ $(document).ready(function () {
     }
 
     function checked() {
-        console.log(count_checked())
         if(count_checked() === 1){
-
             for (let i of $('.btn-show-model')) {
                 i.classList.remove('d-none')
             }
@@ -109,7 +111,6 @@ $(document).ready(function () {
     $('#input_check_all_delete_pane').change(function (){
 
         if($(this).prop('checked')){
-            console.log(3213)
             for (let i of $('.active-row-delete-panel')){
                 $(i).find('.check-row-delete-panel').prop('checked', true)
             }
